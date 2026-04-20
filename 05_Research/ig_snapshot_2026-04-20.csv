@@ -1,0 +1,14 @@
+handle,venue,district,followers_approx,growth_30d_pct,category,notes,snapshot_date
+@standingbar.sg,Standing Bar,D2,28000,1.2,listening_bar,Reference baseline for HCMC listening-bar peer,2026-04-20
+@nestbyair,Nest by AiR,D1,14000,0.8,listening_bar,Vinyl-only positioning,2026-04-20
+@monobysaigonsoul,Mono by Saigon Soul,D1,6000,3.1,listening_bar,Fastest momentum in peer set,2026-04-20
+@thearth.saigon,The Arth Saigon,D1 (Ng Cong Tru),22000,0.4,bar_restaurant,Closest mid-block competitor,2026-04-20
+@homepub.sg,Home Pub,D1 (Ng Cong Tru),18000,0.5,pub,Night-focused neighborhood crowd,2026-04-20
+@rac_coffeeandbeer,R.A.C Coffee & Beer,D1 (Pho Duc Chinh),9000,0.2,cafe_hybrid,Same-street day-to-night model,2026-04-20
+@carpediem_saigon,Carpe Diem,D1 (Ng Cong Tru),7500,0.3,cafe_pub,Mixed daypart,2026-04-20
+@fetticlub,FETTI Club,D1 (Ng Cong Tru),16000,0.6,club,Weekend party (P4),2026-04-20
+@snuffboxsaigon,Snuffbox,D1,11000,0.3,speakeasy,Jazz / soul program,2026-04-20
+@soundpizza,Sound + Pizza,D2,8500,0.9,listening_casual,Casual house/disco + food,2026-04-20
+@laylasaigon,Layla Eatery & Bar,D1,19000,0.4,restaurant_bar,DJ-led late-night not audiophile,2026-04-20
+@katinatcoffee,Katinat,citywide,220000,1.0,chain_cafe,Chain benchmark,2026-04-20
+@laviet_coffee,La Viet Coffee,D1 (Pho Duc Chinh),13000,0.1,specialty_cafe,Single-origin roaster,2026-04-20
