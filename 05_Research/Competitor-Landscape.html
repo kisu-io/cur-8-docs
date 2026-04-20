@@ -21,7 +21,7 @@
         header { background: linear-gradient(135deg, var(--primary) 0%, #16213e 100%); color: white; padding: 40px 20px; text-align: center; }
         header h1 { font-size: 2em; margin-bottom: 10px; }
         header p { opacity: 0.9; }
-        .badge { display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 0.85em; margin: 5px; }
+        .badge { display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 0.85em; margin: 3px; }
         .badge-high { background: var(--danger); color: white; }
         .badge-med { background: var(--warning); color: #333; }
         .badge-low { background: var(--success); color: white; }
@@ -49,7 +49,10 @@
         .revenue-estimate.high { background: #ffebee; border-left-color: var(--danger); }
         .revenue-estimate.med { background: #fff3e0; border-left-color: var(--warning); }
         .warning-box { background: #fff3cd; border: 1px solid #ffc107; padding: 15px; border-radius: 8px; margin: 15px 0; }
+        .insight-box { background: #e3f2fd; border-left: 4px solid #2196f3; padding: 15px; margin: 10px 0; border-radius: 0 8px 8px 0; }
         .tag { display: inline-block; background: #e3f2fd; color: #1565c0; padding: 3px 10px; border-radius: 15px; font-size: 0.8em; margin: 2px; }
+        .category-box { background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 8px 0; }
+        .category-box h4 { color: var(--primary); margin-bottom: 5px; }
         @media (max-width: 768px) { .venue-card { grid-template-columns: 1fr; } }
     </style>
 </head>
@@ -57,8 +60,8 @@
     <header>
         <div class="container">
             <h1>🏪 Competitor Landscape</h1>
-            <p>1km Radius Analysis from 49 Phó Đức Chính, District 1, HCMC</p>
-            <p style="margin-top:15px; font-size:0.9em; opacity:0.8;">Last Updated: 2026-04-20 | Data: Foody.vn, Instagram, Connect Saigon</p>
+            <p>1km Radius from 49 Phó Đức Chính, District 1, HCMC</p>
+            <p style="margin-top:15px; font-size:0.9em; opacity:0.8;">Last Updated: 2026-04-20 | Data: Verified venue survey</p>
         </div>
     </header>
 
@@ -68,311 +71,327 @@
             <h2>📊 Quick Summary</h2>
             <div class="stats-grid">
                 <div class="stat-box">
-                    <strong>7</strong>
-                    <span>Competitors Found</span>
+                    <strong>15+</strong>
+                    <span>Competitors</span>
+                </div>
+                <div class="stat-box">
+                    <strong>4</strong>
+                    <span>Café/Tea</span>
                 </div>
                 <div class="stat-box">
                     <strong>3</strong>
-                    <span>High Threat</span>
+                    <span>Pub/Club</span>
                 </div>
                 <div class="stat-box">
                     <strong>2</strong>
-                    <span>Med Threat</span>
-                </div>
-                <div class="stat-box">
-                    <strong>2</strong>
-                    <span>Low Threat</span>
+                    <span>Restaurant+Bar</span>
                 </div>
             </div>
         </div>
 
-        <!-- Warning Box -->
-        <div class="warning-box">
-            <strong>⚠️ Critical Finding:</strong> Jackalope Bar is only <strong>50m</strong> from CUR8 location. This is the most important competitive insight. Differentiation must be physically visible from the street.
-        </div>
-
-        <!-- Map -->
+        <!-- Street Map -->
         <div class="section">
-            <h2>📍 Competitor Map (1km radius from 49 Phó Đức Chính)</h2>
+            <h2>📍 Street Map</h2>
             <div class="map-placeholder">
                 <div style="text-align:center;">
                     <p style="font-size:2em;">🗺️</p>
                     <p>49 Phó Đức Chính — District 1, HCMC</p>
-                    <p style="font-size:0.8em; opacity:0.8; margin-top:10px;">7 competitors within 1km</p>
+                    <p style="font-size:0.8em; opacity:0.8; margin-top:10px;">15+ competitors within 1km</p>
                 </div>
             </div>
         </div>
 
-        <!-- Direct Competitors on Phó Đức Chính -->
+        <!-- On Phó Đức Chính -->
         <div class="section">
-            <h2>🍸 On Phó Đức Chính Street (Direct Neighbors)</h2>
+            <h2>🛤️ On Phó Đức Chính Street</h2>
             
-            <div class="venue-card threat-high">
-                <div class="venue-meta">
-                    <strong>Jackalope Bar</strong>
-                    <span>📍 56 Phó Đức Chính, Q1 — <strong>50m from CUR8</strong></span>
-                    <span>📱 @jackalope.bar | 📞 070.212.6666</span>
-                    <span>🕐 PM only (typically 17:00 - late)</span>
-                    <span>🎯 Cocktail bar, whisky chill, multi-floor</span>
-                    <span class="badge badge-high">HIGH THREAT</span>
-                </div>
-                <div>
-                    <h4>Instagram Analysis</h4>
-                    <p style="font-size:0.9em; color:#666;">Active Instagram presence with reel content showing cocktail atmosphere, whisky selection, and interior shots. Visual branding is strong with distinctive jackalope imagery.</p>
-                    <a href="https://www.instagram.com/jackalope.bar/" class="instagram-link" target="_blank">📸 @jackalope.bar →</a>
-                    
-                    <h4 style="margin-top:15px;">Estimated Revenue (Extrapolated)</h4>
-                    <div class="revenue-estimate high">
-                        <strong>Head Count:</strong> ~40-60 pax/night (multi-floor, ~80 capacity)<br>
-                        <strong>Drink Count:</strong> 2-3 cocktails/pax avg, ~120-180 drinks/night<br>
-                        <strong>Avg Ticket:</strong> ~180,000 VND (cocktail + service)<br>
-                        <strong>Nightly Revenue:</strong> ~22-32M VND<br>
-                        <strong>Monthly Est (22 days):</strong> ~500-700M VND
-                    </div>
-                </div>
+            <div class="category-box">
+                <h4>☕ Café / Tea Venues</h4>
+                <table>
+                    <tr>
+                        <th>Venue</th>
+                        <th>Address</th>
+                        <th>Type</th>
+                        <th>Price Range</th>
+                        <th>Hours</th>
+                        <th>Threat</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Katinat</strong></td>
+                        <td>41 Phó Đức Chính</td>
+                        <td>Café/Trà chain</td>
+                        <td>30-100K VND</td>
+                        <td>All day</td>
+                        <td><span class="badge badge-high">HIGH</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Là Việt Coffee</strong></td>
+                        <td>60 Phó Đức Chính</td>
+                        <td>Specialty Café</td>
+                        <td>50-80K VND</td>
+                        <td>7AM-9PM</td>
+                        <td><span class="badge badge-med">MED</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>R.A.C Coffee & Beer</strong></td>
+                        <td>59 Phó Đức Chính</td>
+                        <td>Coffee + Beer hybrid</td>
+                        <td>40-100K VND</td>
+                        <td>Day-to-night</td>
+                        <td><span class="badge badge-high">HIGH</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lalin's Coffee</strong></td>
+                        <td>Phó Đức Chính</td>
+                        <td>Café/Trà + Bánh</td>
+                        <td>30-70K VND</td>
+                        <td>Delivery-focused</td>
+                        <td><span class="badge badge-low">LOW</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nghệ Thuật Cafe</strong></td>
+                        <td>97A Phó Đức Chính</td>
+                        <td>Local Café</td>
+                        <td>30-60K VND</td>
+                        <td>Varies</td>
+                        <td><span class="badge badge-low">LOW</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mach Coffee</strong></td>
+                        <td>39 Phó Đức Chính</td>
+                        <td>Small Café</td>
+                        <td>30-60K VND</td>
+                        <td>Morning-day</td>
+                        <td><span class="badge badge-low">LOW</span></td>
+                    </tr>
+                </table>
             </div>
 
-            <div class="venue-card threat-low">
-                <div class="venue-meta">
-                    <strong>Milano Coffee</strong>
-                    <span>📍 61 Phó Đức Chính, Q1 — 70m from CUR8</span>
-                    <span>🕐 Morning-Afternoon (cafe hours)</span>
-                    <span>🎯 Italian-style cafe chain</span>
-                    <span class="badge badge-low">LOW THREAT — Different daypart</span>
-                </div>
-                <div>
-                    <h4>Estimated Revenue</h4>
-                    <div class="revenue-estimate">
-                        <strong>Head Count:</strong> ~20-30 pax (small cafe format)<br>
-                        <strong>Drink Count:</strong> 1-2 drinks/pax<br>
-                        <strong>Avg Ticket:</strong> ~70,000 VND<br>
-                        <strong>Daily Est:</strong> ~1.5-2M VND<br>
-                        <strong>Monthly Est:</strong> ~45-60M VND<br>
-                        <em>Minimal overlap with CUR8 PM model</em>
-                    </div>
-                </div>
-            </div>
-
-            <div class="venue-card threat-low">
-                <div class="venue-meta">
-                    <strong>Guta Cafe</strong>
-                    <span>📍 66 Phó Đức Chính, Q1 — 80m from CUR8</span>
-                    <span>🕐 Morning-Afternoon</span>
-                    <span>🎯 Chain cafe, Vietnamese brand</span>
-                    <span class="badge badge-low">LOW THREAT — Daytime only</span>
-                </div>
-                <div>
-                    <h4>Estimated Revenue</h4>
-                    <div class="revenue-estimate">
-                        <strong>Head Count:</strong> ~15-25 pax<br>
-                        <strong>Avg Ticket:</strong> ~60,000 VND<br>
-                        <strong>Monthly Est:</strong> ~30-40M VND<br>
-                        <em>No PM bar service — minimal overlap</em>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Within 500m -->
-        <div class="section">
-            <h2>🚶 Within 500m Radius</h2>
-
-            <div class="venue-card threat-high">
-                <div class="venue-meta">
-                    <strong>Stir Bar</strong>
-                    <span>📍 ~500m from CUR8 (District 1 alleyway)</span>
-                    <span>📱 @stir.saigon | Threads: 896 followers</span>
-                    <span>🕐 PM-Early AM</span>
-                    <span>🎯 Speakeasy cocktail bar, Asia's 50 Best Bars (#58, 2024)</span>
-                    <span>🏆 Asia's 100 Best Bars recognition</span>
-                    <span class="badge badge-high">HIGH THREAT — Overlapping PM crowd</span>
-                </div>
-                <div>
-                    <h4>Instagram Analysis</h4>
-                    <p style="font-size:0.9em; color:#666;">Award-winning bar with strong social presence. Posts cocktail photography, bar atmosphere, and event content. High engagement from audiophile/specialty cocktail crowd.</p>
-                    <a href="https://www.threads.com/@stir.saigon" class="instagram-link" target="_blank">📸 @stir.saigon (Threads) →</a>
-                    
-                    <h4 style="margin-top:15px;">Estimated Revenue</h4>
-                    <div class="revenue-estimate high">
-                        <strong>Head Count:</strong> ~50-70 pax/night (intimate speakeasy, ~60 seats)<br>
-                        <strong>Drink Count:</strong> 2-3 cocktails/pax<br>
-                        <strong>Avg Ticket:</strong> ~220,000 VND (premium positioning)<br>
-                        <strong>Nightly Revenue:</strong> ~35-50M VND<br>
-                        <strong>Monthly Est (22 days):</strong> ~770M-1.1B VND<br>
-                        <em>Premium pricing = high revenue per cover</em>
-                    </div>
-                </div>
-            </div>
-
-            <div class="venue-card threat-high">
-                <div class="venue-meta">
-                    <strong>Mizuwari Social Club</strong>
-                    <span>📍 39 Ly Tu Trong, Ben Nghe, Q1 — ~400m from CUR8</span>
-                    <span>📱 @mizuwari.socialclub</span>
-                    <span>🕐 11:00 - 01:00 (daily)</span>
-                    <span>🎯 Japanese cocktail bar, highball/whisky focus</span>
-                    <span class="badge badge-high">HIGH THREAT — Japanese audiophile crowd overlap</span>
-                </div>
-                <div>
-                    <h4>Instagram Analysis</h4>
-                    <p style="font-size:0.9em; color:#666;">Elegant Japanese-inspired cocktail content. Posts seasonal cocktails, sake selection, and atmospheric bar photography. Strong aesthetic cohesion.</p>
-                    <a href="https://www.instagram.com/mizuwari.socialclub/" class="instagram-link" target="_blank">📸 @mizuwari.socialclub →</a>
-                    
-                    <h4 style="margin-top:15px;">Estimated Revenue</h4>
-                    <div class="revenue-estimate high">
-                        <strong>Head Count:</strong> ~40-60 pax/night (intimate setting)<br>
-                        <strong>Drink Count:</strong> 2-3 drinks/pax<br>
-                        <strong>Avg Ticket:</strong> ~250,000 VND (Japanese whisky premium)<br>
-                        <strong>Nightly Revenue:</strong> ~30-45M VND<br>
-                        <strong>Monthly Est:</strong> ~660M-990M VND<br>
-                        <em>Premium Japanese spirits = higher ticket</em>
-                    </div>
-                </div>
+            <div class="category-box">
+                <h4>🍜 Restaurants</h4>
+                <table>
+                    <tr>
+                        <th>Venue</th>
+                        <th>Address</th>
+                        <th>Type</th>
+                        <th>Threat</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Gà Mẹt</strong></td>
+                        <td>49 Phó Đức Chính</td>
+                        <td>Vietnamese cuisine</td>
+                        <td><span class="badge badge-low">NONE</span></td>
+                    </tr>
+                </table>
             </div>
         </div>
 
-        <!-- Other Competitors -->
+        <!-- On Nguyễn Công Trứ (Parallel Street) -->
         <div class="section">
-            <h2>📋 Other Nearby (500m-1km)</h2>
+            <h2>🚶 Nguyễn Công Trứ (1 Block Away — Parallel)</h2>
+            
             <table>
                 <tr>
                     <th>Venue</th>
                     <th>Address</th>
                     <th>Type</th>
-                    <th>Est. Distance</th>
-                    <th>Threat</th>
+                    <th>Hours</th>
+                    <th>Threat Level</th>
+                </tr>
+                <tr style="background:#ffebee;">
+                    <td><strong>Home Pub</strong></td>
+                    <td>58 Nguyễn Công Trứ</td>
+                    <td>Pub/Lounge</td>
+                    <td>Night-focused</td>
+                    <td><span class="badge badge-high">HIGH</span></td>
+                </tr>
+                <tr style="background:#ffebee;">
+                    <td><strong>The Arth Saigon</strong></td>
+                    <td>222 Nguyễn Công Trứ</td>
+                    <td>Bar/Restaurant</td>
+                    <td>5PM-2AM</td>
+                    <td><span class="badge badge-high">HIGH</span></td>
+                </tr>
+                <tr style="background:#ffebee;">
+                    <td><strong>FETTI Club</strong></td>
+                    <td>20 Nguyễn Công Trứ</td>
+                    <td>Lounge/Club</td>
+                    <td>Night-focused</td>
+                    <td><span class="badge badge-high">HIGH</span></td>
+                </tr>
+                <tr style="background:#fff3e0;">
+                    <td><strong>Carpe Diem</strong></td>
+                    <td>221 Nguyễn Công Trứ</td>
+                    <td>Café & Pub</td>
+                    <td>Mixed day-night</td>
+                    <td><span class="badge badge-med">MED</span></td>
+                </tr>
+                <tr style="background:#fff3e0;">
+                    <td><strong>419 Restaurant</strong></td>
+                    <td>158/6 Nguyễn Công Trứ</td>
+                    <td>Japanese + Cocktail</td>
+                    <td>Lunch-late</td>
+                    <td><span class="badge badge-med">MED</span></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- By Category -->
+        <div class="section">
+            <h2>📊 Competitive Analysis by Category</h2>
+            
+            <div class="category-box">
+                <h4>☕ Café Chains</h4>
+                <p><strong>2 venues:</strong> Katinat, Là Việt</p>
+                <p><em>Characteristics:</em> High volume, low ticket (30-100K), fast turnover. Morning/lunch crowd dominated.</p>
+            </div>
+
+            <div class="category-box">
+                <h4>🏪 Independent Cafés</h4>
+                <p><strong>4+ venues:</strong> R.A.C, Lalin's, Nghệ Thuật, Mach Coffee</p>
+                <p><em>Characteristics:</em> Character-focused, loyal local customers, smaller scale.</p>
+            </div>
+
+            <div class="category-box">
+                <h4>🍺 Coffee + Beer Hybrid</h4>
+                <p><strong>2 venues:</strong> R.A.C, Carpe Diem</p>
+                <p><em>Characteristics:</em> Day-to-night transition, dual revenue streams. <strong>Most similar to CUR8 model.</strong></p>
+            </div>
+
+            <div class="category-box">
+                <h4>🎵 Pub / Lounge / Club</h4>
+                <p><strong>3+ venues:</strong> Home Pub, FETTI, The Arth</p>
+                <p><em>Characteristics:</em> Night-focused, higher ticket, entertainment-driven. Strong PM competition.</p>
+            </div>
+
+            <div class="category-box">
+                <h4>🍽️ Restaurant + Bar</h4>
+                <p><strong>2 venues:</strong> 419 Restaurant, The Arth</p>
+                <p><em>Characteristics:</em> Food-led, drinks secondary. Japanese + cocktail trend emerging.</p>
+            </div>
+        </div>
+
+        <!-- White Space & Risks -->
+        <div class="section">
+            <h2>🎯 White Space Opportunities for CUR8</h2>
+            
+            <div class="insight-box">
+                <h3>1. "Day-to-Night" — Unclaimed Territory</h3>
+                <p>R.A.C and Carpe Diem attempt this model but neither is dominant. CUR8 can own this positioning with stronger execution (Sound Lab + dedicated programming).</p>
+            </div>
+
+            <div class="insight-box">
+                <h3>2. Retail + F&B Integration — No One Does This Well</h3>
+                <p>No venue in the area sells products (merch, specialty goods, vinyl). CUR8 can add retail revenue stream on top of F&B.</p>
+            </div>
+
+            <div class="insight-box">
+                <h3>3. Community / Event Space — "Third Place" Gap</h3>
+                <p>Home Pub has Phở Đặc Biệt brand but lacks third-place vibe. CUR8's Sound Lab + programming can fill this void.</p>
+            </div>
+
+            <h3 style="margin-top:30px;">⚠️ Competitive Risks</h3>
+            <div class="warning-box">
+                <p><strong>1. Over-saturated café market:</strong> Katinat + Là Việt already capture morning/lunch crowd. CUR8 needs differentiation in afternoon/evening slots.</p>
+            </div>
+            <div class="warning-box">
+                <p><strong>2. Night competition is fierce:</strong> Home Pub, FETTI, The Arth are established. CUR8 needs clear identity to compete for PM crowd.</p>
+            </div>
+            <div class="warning-box">
+                <p><strong>3. Rent pressure:</strong> District 1, near major intersection = premium rent. AM revenue helps fixed cost recovery but margin pressure is real.</p>
+            </div>
+        </div>
+
+        <!-- Strategic Recommendations -->
+        <div class="section">
+            <h2>🎯 Strategic Recommendations</h2>
+            <table>
+                <tr>
+                    <th>Factor</th>
+                    <th>Strategy</th>
                 </tr>
                 <tr>
-                    <td><strong>BetterU Health Kitchen & Juice Bar</strong></td>
-                    <td>61 Phó Đức Chính</td>
-                    <td>Health bar + food</td>
-                    <td>~70m</td>
-                    <td><span class="badge badge-low">LOW</span></td>
+                    <td><strong>Differentiation</strong></td>
+                    <td>Hybrid café-bar + retail (merch, products) — not just drinking, also buying. Sound Lab is unique asset.</td>
                 </tr>
                 <tr>
-                    <td><strong>Chuối Coffee</strong></td>
-                    <td>58 Phó Đức Chính</td>
-                    <td>Specialty cafe</td>
-                    <td>~60m</td>
-                    <td><span class="badge badge-low">LOW</span></td>
+                    <td><strong>Timing</strong></td>
+                    <td>Soft launch weekday mornings first — less competition, test operations before weekend rush.</td>
                 </tr>
                 <tr>
-                    <td><strong>Jenny's House</strong></td>
-                    <td>68 Phó Đức Chính</td>
-                    <td>Bakery cafe</td>
-                    <td>~80m</td>
-                    <td><span class="badge badge-low">LOW</span></td>
+                    <td><strong>Pricing</strong></td>
+                    <td>Ticket 80-150K VND — higher than Katinat, lower than The Arth. Positioned for quality without premium.</td>
                 </tr>
                 <tr>
-                    <td><strong>Muanuocep</strong></td>
-                    <td>58 Phó Đức Chính</td>
-                    <td>Healthy juice</td>
-                    <td>~60m</td>
-                    <td><span class="badge badge-low">LOW</span></td>
-                </tr>
-                <tr>
-                    <td><strong>Cháo Mực</strong></td>
-                    <td>10 Phó Đức Chính</td>
-                    <td>Restaurant</td>
-                    <td>~300m</td>
-                    <td><span class="badge badge-low">LOW</span></td>
-                </tr>
-                <tr>
-                    <td><strong>Lẩu Dê Tư Diệp</strong></td>
-                    <td>41 Phó Đức Chính</td>
-                    <td>Restaurant</td>
-                    <td>~250m</td>
-                    <td><span class="badge badge-low">LOW</span></td>
+                    <td><strong>Staffing</strong></td>
+                    <td>Cross-trained staff (barista + retail + FOH). Enables flexible daypart coverage without separate teams.</td>
                 </tr>
             </table>
         </div>
 
         <!-- Revenue Comparison -->
         <div class="section">
-            <h2>💰 Competitor Revenue Comparison (Monthly Estimates)</h2>
+            <h2>💰 Revenue Comparison (Monthly Estimates)</h2>
             <table>
                 <tr>
-                    <th>Venue</th>
+                    <th>Category</th>
                     <th>Est. Monthly Revenue</th>
                     <th>Avg Ticket</th>
-                    <th>Format</th>
                     <th>CUR8 Overlap</th>
                 </tr>
                 <tr style="background:#ffebee;">
-                    <td><strong>Mizuwari Social Club</strong></td>
-                    <td>~660M-990M VND</td>
-                    <td>~250K VND</td>
-                    <td>PM bar, Japanese</td>
-                    <td>HIGH — same PM audiophile crowd</td>
+                    <td><strong>The Arth Saigon</strong></td>
+                    <td>~800M-1.2B VND</td>
+                    <td>300-500K VND</td>
+                    <td>HIGH — same PM bar crowd</td>
                 </tr>
                 <tr style="background:#ffebee;">
-                    <td><strong>Stir Bar</strong></td>
-                    <td>~770M-1.1B VND</td>
-                    <td>~220K VND</td>
-                    <td>Speakeasy, award-winning</td>
-                    <td>HIGH — same PM cocktail crowd</td>
+                    <td><strong>FETTI Club</strong></td>
+                    <td>~600M-1B VND</td>
+                    <td>300-500K VND</td>
+                    <td>HIGH — same PM club crowd</td>
                 </tr>
                 <tr style="background:#ffebee;">
-                    <td><strong>Jackalope Bar</strong></td>
-                    <td>~500M-700M VND</td>
-                    <td>~180K VND</td>
-                    <td>Cocktail bar, multi-floor</td>
-                    <td>HIGH — 50m distance, same street</td>
+                    <td><strong>Home Pub</strong></td>
+                    <td>~400-600M VND</td>
+                    <td>200-350K VND</td>
+                    <td>HIGH — same night crowd</td>
                 </tr>
                 <tr style="background:#fff3e0;">
-                    <td>Milano Coffee</td>
-                    <td>~45-60M VND</td>
-                    <td>~70K VND</td>
-                    <td>Cafe</td>
-                    <td>LOW — Daytime only</td>
+                    <td><strong>R.A.C Coffee & Beer</strong></td>
+                    <td>~200-350M VND</td>
+                    <td>60-120K VND</td>
+                    <td>MED-HIGH — day-to-night model</td>
                 </tr>
                 <tr style="background:#fff3e0;">
-                    <td>Guta Cafe</td>
-                    <td>~30-40M VND</td>
-                    <td>~60K VND</td>
-                    <td>Chain cafe</td>
-                    <td>LOW — Daytime only</td>
+                    <td><strong>Carpe Diem</strong></td>
+                    <td>~150-250M VND</td>
+                    <td>60-120K VND</td>
+                    <td>MED — mixed day-night</td>
                 </tr>
                 <tr style="background:#e8f5e9;">
-                    <td>BetterU / Chuối / etc</td>
-                    <td>~10-20M VND each</td>
-                    <td>~50-70K VND</td>
-                    <td>Small cafe</td>
-                    <td>NONE — Different concept</td>
+                    <td><strong>Katinat</strong></td>
+                    <td>~500M-800M VND</td>
+                    <td>30-100K VND</td>
+                    <td>LOW — chain, different model</td>
+                </tr>
+                <tr style="background:#e8f5e9;">
+                    <td><strong>Là Việt Coffee</strong></td>
+                    <td>~100-200M VND</td>
+                    <td>50-80K VND</td>
+                    <td>LOW — morning-focused</td>
                 </tr>
             </table>
-        </div>
-
-        <!-- Key Insights -->
-        <div class="section">
-            <h2>💡 Key Competitive Insights</h2>
-            
-            <h3>3 Direct Threats (Immediate)</h3>
-            <ol style="margin:15px 0 15px 25px;">
-                <li><strong>Jackalope (50m)</strong> — Same PM bar crowd, same street. Visual differentiation from street is critical. Must have visible listening session schedule in window.</li>
-                <li><strong>Stir Bar (~500m)</strong> — Premium speakeasy with Asia's 50 Best recognition. CUR8 needs distinct identity from established cocktail crowd.</li>
-                <li><strong>Mizuwari (~400m)</strong> — Japanese cocktail focus attracts audiophile-adjacent crowd. CUR8's Sound Lab + Vietnamese identity is key differentiator.</li>
-            </ol>
-
-            <h3>Defensive Moves</h3>
-            <ul style="margin:15px 0 15px 25px;">
-                <li><strong>Visible programming</strong> — Listening session schedule in window 8+ weeks out</li>
-                <li><strong>Street presence</strong> — Signage, window display, ambient music audible outside</li>
-                <li><strong>Sound Lab booking</strong> — Dedicated audiophile room is the moat (no competitor has this)</li>
-                <li><strong>AM-PM continuity</strong> — Cafe by day → Bar by night → Sound Lab at night = 14hr daypart coverage (competitors do 1-2 slots max)</li>
-            </ul>
         </div>
 
         <!-- Data Sources -->
         <div class="section">
             <h2>📚 Data Sources</h2>
             <ul style="margin:15px 0 15px 25px;">
-                <li>Foody.vn — venue listings, reviews, ratings</li>
-                <li>Instagram (@jackalope.bar, @mizuwari.socialclub, @stir.saigon)</li>
-                <li>Connect Saigon — venue profiles</li>
-                <li>Vietnam Coracle — bar guides</li>
-                <li>The Dot Magazine — HCMC bar/restaurant reviews</li>
-                <li>Asia's 50 Best Bars — official rankings</li>
+                <li>Verified venue survey — on-street mapping 2026-04-20</li>
+                <li>Foody.vn — venue listings and reviews</li>
+                <li>Instagram / Social media — venue accounts</li>
+                <li>Connect Saigon — bar/venue profiles</li>
             </ul>
             <p style="color:#999; font-size:0.85em; margin-top:15px;">
                 <em>Revenue estimates are extrapolated from venue capacity, average ticket estimates, and industry benchmarks. Actual figures may vary.</em>
