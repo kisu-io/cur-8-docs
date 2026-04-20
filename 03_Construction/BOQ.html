@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BOQ — Bill of Quantities — CUR8 Wiki</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<button class="menu-toggle" aria-label="Toggle menu" onclick="document.body.classList.toggle('nav-open')">☰</button>
+<div class="layout">
+<nav class="sidebar">
+<div class="sidebar-brand"><a href="../index.html">CUR8</a><span class="sidebar-sub">Project Wiki</span></div>
+<ul class="nav-top">
+<li class=""><a href="../index.html">Home</a></li>
+<li class=""><a href="../Glossary.html">Glossary</a></li>
+</ul>
+<div class="nav-section"><div class="nav-section-label">Overview</div><ul>
+<li class=""><a href="../00_Overview/Concept.html">Concept</a></li>
+<li class=""><a href="../00_Overview/Current-Status.html">Current Status</a></li>
+<li class=""><a href="../00_Overview/Key-Numbers.html">Key Numbers</a></li>
+<li class=""><a href="../00_Overview/Timeline.html">Timeline</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-label">Planning</div><ul>
+<li class=""><a href="../01_Planning/Business-Plan.html">Business Plan</a></li>
+<li class=""><a href="../01_Planning/Finance-Model.html">Finance Model</a></li>
+<li class=""><a href="../01_Planning/Unit-Economics.html">Unit Economics</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-label">Design</div><ul>
+<li class=""><a href="../02_Design/Detailed-Design.html">Detailed Design</a></li>
+<li class=""><a href="../02_Design/Floor-Layout.html">Floor Layout</a></li>
+<li class=""><a href="../02_Design/Moodboards.html">Moodboards</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-label">Construction</div><ul>
+<li class=" current"><a href="../03_Construction/BOQ.html">BOQ</a></li>
+<li class=""><a href="../03_Construction/Construction-Budget.html">Construction Budget</a></li>
+<li class=""><a href="../03_Construction/Construction-Timeline.html">Construction Timeline</a></li>
+<li class=""><a href="../03_Construction/Payment-Schedule.html">Payment Schedule</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-label">Operations</div><ul>
+<li class="nested"><a href="../04_Operations/Reports/01_Risk-Analysis.html">Risk Analysis</a></li>
+<li class="nested"><a href="../04_Operations/Reports/02_Revenue-Diversification.html">Revenue Diversification</a></li>
+<li class="nested"><a href="../04_Operations/Reports/03_Daypart-Simulation.html">Daypart Simulation</a></li>
+<li class="nested"><a href="../04_Operations/Reports/04_HR-Rampup.html">HR Rampup</a></li>
+<li class=""><a href="../04_Operations/Equipment.html">Equipment</a></li>
+<li class=""><a href="../04_Operations/Licenses.html">Licenses</a></li>
+<li class=""><a href="../04_Operations/Menu.html">Menu</a></li>
+<li class=""><a href="../04_Operations/OpEx.html">OpEx</a></li>
+<li class=""><a href="../04_Operations/PnL-Operations.html">PnL Operations</a></li>
+<li class=""><a href="../04_Operations/Revenue-Plan.html">Revenue Plan</a></li>
+<li class=""><a href="../04_Operations/Shifts.html">Shifts</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-label">Research</div><ul>
+<li class=""><a href="../05_Research/Competitor-Landscape.html">Competitor Landscape</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-label">People</div><ul>
+<li class=""><a href="../People/Suppliers.html">Suppliers</a></li>
+<li class=""><a href="../People/Team.html">Team</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-label">Advisory</div><ul>
+<li class=""><a href="../06_Financial-Advisory.html">Financial Advisory</a></li>
+</ul></div>
+</nav>
+<main class="content">
+<article class="prose">
+<h1 id="boq-bill-of-quantities">BOQ — Bill of Quantities</h1>
+<blockquote>
+<p>Parent: <a href="../index.html" class="wikilink">Home</a> · Source: <code>03_construction/BOQ_*.xlsx</code> (V1, V2) · Related: <a href="../03_Construction/Construction-Budget.html" class="wikilink">Construction-Budget</a>, <a href="../03_Construction/Payment-Schedule.html" class="wikilink">Payment-Schedule</a></p>
+</blockquote>
+<h2 id="two-scenarios-on-the-table">Two scenarios on the table</h2>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th style="text-align: right;">Total</th>
+<th>Profile</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>V1 — base</strong></td>
+<td style="text-align: right;">~2,710,000,000 VND</td>
+<td>Functional fit-out; standard finishes; no upgraded acoustic package; rooftop awning basic</td>
+</tr>
+<tr>
+<td><strong>V2 — upgrade</strong></td>
+<td style="text-align: right;">~4,010,000,000 VND</td>
+<td>Premium finishes; full acoustic package including Sound Lab isolation; rooftop premium awning + planting</td>
+</tr>
+</tbody>
+</table>
+<p>Delta: <strong>~1,300M VND</strong>. Most of the delta lives in three line items:</p>
+<ol>
+<li>Sound Lab acoustic build-out (~+450M)</li>
+<li>Premium finishes across PM bar + Sound Lab (~+500M)</li>
+<li>Rooftop weatherproofing + landscape (~+250M)</li>
+<li>FF&amp;E premium (~+100M)</li>
+</ol>
+<h2 id="15-boq-categories">15 BOQ categories</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">#</th>
+<th>Category</th>
+<th style="text-align: right;">V1 (VND)</th>
+<th style="text-align: right;">V2 (VND)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>Demolition + site prep</td>
+<td style="text-align: right;">90M</td>
+<td style="text-align: right;">110M</td>
+<td>Existing tenant strip-out</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>Structural reinforcement</td>
+<td style="text-align: right;">180M</td>
+<td style="text-align: right;">210M</td>
+<td>Floor 3 acoustic load + rooftop awning</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>Wet works (plumbing, drainage)</td>
+<td style="text-align: right;">220M</td>
+<td style="text-align: right;">270M</td>
+<td>Bar + kitchen + toilets + rooftop</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td>Electrical</td>
+<td style="text-align: right;">280M</td>
+<td style="text-align: right;">380M</td>
+<td>AV power, dimming, kitchen, EV-ready</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td>HVAC</td>
+<td style="text-align: right;">240M</td>
+<td style="text-align: right;">320M</td>
+<td>Multi-zone; dedicated Sound Lab unit</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td>PCCC (fire safety)</td>
+<td style="text-align: right;">150M</td>
+<td style="text-align: right;">180M</td>
+<td>Sprinklers, alarm, smoke evac</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td>Walls + partitions</td>
+<td style="text-align: right;">240M</td>
+<td style="text-align: right;">320M</td>
+<td>Including double-wall Sound Lab</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td>Ceilings</td>
+<td style="text-align: right;">130M</td>
+<td style="text-align: right;">220M</td>
+<td>Inc. acoustic clouds Sound Lab</td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td>Floors</td>
+<td style="text-align: right;">200M</td>
+<td style="text-align: right;">290M</td>
+<td>Oak (cafe), terrazzo (bar), floating (Sound Lab)</td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td>Joinery (bar, banquette, shelving)</td>
+<td style="text-align: right;">320M</td>
+<td style="text-align: right;">480M</td>
+<td>Custom</td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
+<td>Painting + finishes</td>
+<td style="text-align: right;">110M</td>
+<td style="text-align: right;">180M</td>
+<td>Lime-wash + specialist finishes</td>
+</tr>
+<tr>
+<td style="text-align: right;">12</td>
+<td>Lighting fixtures</td>
+<td style="text-align: right;">140M</td>
+<td style="text-align: right;">240M</td>
+<td>Track + pendant + sconce</td>
+</tr>
+<tr>
+<td style="text-align: right;">13</td>
+<td>Doors + glazing</td>
+<td style="text-align: right;">100M</td>
+<td style="text-align: right;">150M</td>
+<td>Acoustic glazing on Sound Lab</td>
+</tr>
+<tr>
+<td style="text-align: right;">14</td>
+<td>Rooftop scope</td>
+<td style="text-align: right;">180M</td>
+<td style="text-align: right;">380M</td>
+<td>Awning, planting, decking</td>
+</tr>
+<tr>
+<td style="text-align: right;">15</td>
+<td>Project management + contingency</td>
+<td style="text-align: right;">130M</td>
+<td style="text-align: right;">280M</td>
+<td>5% V1 / 7% V2</td>
+</tr>
+<tr>
+<td style="text-align: right;"></td>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>~2,710M</strong></td>
+<td style="text-align: right;"><strong>~4,010M</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><em>Numbers above are reconstructed totals from category roll-up in the source spreadsheet; line items may vary slightly when re-priced.</em></p>
+<h2 id="reconciliation-status">Reconciliation status</h2>
+<p>🟡 <strong>Open as of 2026-04-20.</strong> No version is signed yet.</p>
+<p>The recommended path (under discussion):
+- <strong>Adopt V1 as the base</strong> for cash management
+- <strong>Add V2 acoustic package only</strong> for the Sound Lab (~+450M) — non-negotiable for the differentiator
+- <strong>Defer rooftop premium</strong> to a Y1 reinvestment if revenue clears plan
+- <strong>Result: ~3,160M</strong> mid-case construction</p>
+<p>This mid-case is what the <a href="../03_Construction/Construction-Budget.html" class="wikilink">Construction-Budget</a> page treats as the working number.</p>
+<h2 id="risks">Risks</h2>
+<ul>
+<li><strong>Vietnamese construction inflation</strong> running ~6–8% YoY for finishes</li>
+<li><strong>Sound Lab spec drift</strong> — once acoustic engineer reviews, scope may grow</li>
+<li><strong>Hidden conditions</strong> at the existing building — likely contingency &gt;5% needed</li>
+<li><strong>PCCC inspection</strong> can require change orders — budget for a 2nd round</li>
+</ul>
+<h2 id="see-also">See also</h2>
+<ul>
+<li><a href="../03_Construction/Construction-Budget.html" class="wikilink">Construction-Budget</a> — the high-level 15-category roll-up</li>
+<li><a href="../03_Construction/Construction-Timeline.html" class="wikilink">Construction-Timeline</a> — build schedule</li>
+<li><a href="../03_Construction/Payment-Schedule.html" class="wikilink">Payment-Schedule</a> — milestone-based contractor payments</li>
+</ul>
+</article>
+<footer class="page-footer">
+<div>CUR8 project wiki · generated 2026-04-20</div>
+<div class="breadcrumb-meta">03 Construction / BOQ</div>
+</footer>
+</main>
+</div>
+</body>
+</html>

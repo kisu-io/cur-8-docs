@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Report 03 — Daypart Simulation — CUR8 Wiki</title>
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+<button class="menu-toggle" aria-label="Toggle menu" onclick="document.body.classList.toggle('nav-open')">☰</button>
+<div class="layout">
+<nav class="sidebar">
+<div class="sidebar-brand"><a href="../../index.html">CUR8</a><span class="sidebar-sub">Project Wiki</span></div>
+<ul class="nav-top">
+<li class=""><a href="../../index.html">Home</a></li>
+<li class=""><a href="../../Glossary.html">Glossary</a></li>
+</ul>
+<div class="nav-section"><div class="nav-section-label">Overview</div><ul>
+<li class=""><a href="../../00_Overview/Concept.html">Concept</a></li>
+<li class=""><a href="../../00_Overview/Current-Status.html">Current Status</a></li>
+<li class=""><a href="../../00_Overview/Key-Numbers.html">Key Numbers</a></li>
+<li class=""><a href="../../00_Overview/Timeline.html">Timeline</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-label">Planning</div><ul>
+<li class=""><a href="../../01_Planning/Business-Plan.html">Business Plan</a></li>
+<li class=""><a href="../../01_Planning/Finance-Model.html">Finance Model</a></li>
+<li class=""><a href="../../01_Planning/Unit-Economics.html">Unit Economics</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-label">Design</div><ul>
+<li class=""><a href="../../02_Design/Detailed-Design.html">Detailed Design</a></li>
+<li class=""><a href="../../02_Design/Floor-Layout.html">Floor Layout</a></li>
+<li class=""><a href="../../02_Design/Moodboards.html">Moodboards</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-label">Construction</div><ul>
+<li class=""><a href="../../03_Construction/BOQ.html">BOQ</a></li>
+<li class=""><a href="../../03_Construction/Construction-Budget.html">Construction Budget</a></li>
+<li class=""><a href="../../03_Construction/Construction-Timeline.html">Construction Timeline</a></li>
+<li class=""><a href="../../03_Construction/Payment-Schedule.html">Payment Schedule</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-label">Operations</div><ul>
+<li class="nested"><a href="../../04_Operations/Reports/01_Risk-Analysis.html">Risk Analysis</a></li>
+<li class="nested"><a href="../../04_Operations/Reports/02_Revenue-Diversification.html">Revenue Diversification</a></li>
+<li class="nested current"><a href="../../04_Operations/Reports/03_Daypart-Simulation.html">Daypart Simulation</a></li>
+<li class="nested"><a href="../../04_Operations/Reports/04_HR-Rampup.html">HR Rampup</a></li>
+<li class=""><a href="../../04_Operations/Equipment.html">Equipment</a></li>
+<li class=""><a href="../../04_Operations/Licenses.html">Licenses</a></li>
+<li class=""><a href="../../04_Operations/Menu.html">Menu</a></li>
+<li class=""><a href="../../04_Operations/OpEx.html">OpEx</a></li>
+<li class=""><a href="../../04_Operations/PnL-Operations.html">PnL Operations</a></li>
+<li class=""><a href="../../04_Operations/Revenue-Plan.html">Revenue Plan</a></li>
+<li class=""><a href="../../04_Operations/Shifts.html">Shifts</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-label">Research</div><ul>
+<li class=""><a href="../../05_Research/Competitor-Landscape.html">Competitor Landscape</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-label">People</div><ul>
+<li class=""><a href="../../People/Suppliers.html">Suppliers</a></li>
+<li class=""><a href="../../People/Team.html">Team</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-label">Advisory</div><ul>
+<li class=""><a href="../../06_Financial-Advisory.html">Financial Advisory</a></li>
+</ul></div>
+</nav>
+<main class="content">
+<article class="prose">
+<h1 id="report-03-daypart-simulation">Report 03 — Daypart Simulation</h1>
+<blockquote>
+<p>Parent: <a href="../../index.html" class="wikilink">Home</a> · Source: <code>04_operations/reports/03_daypart_simulation.html</code> · Related: <a href="../../04_Operations/Revenue-Plan.html" class="wikilink">../Revenue-Plan</a>, <a href="../../01_Planning/Unit-Economics.html" class="wikilink">../../01_Planning/Unit-Economics</a>, <a href="../../06_Financial-Advisory.html" class="wikilink">../../06_Financial-Advisory</a></p>
+</blockquote>
+<h2 id="purpose">Purpose</h2>
+<p>The finance model (see <a href="../../01_Planning/Finance-Model.html" class="wikilink">../../01_Planning/Finance-Model</a>) builds revenue top-down from seats × avg check × days. The <strong>daypart simulation</strong> rebuilds revenue <strong>bottom-up from seat-turns</strong> to stress-test the plan.</p>
+<p>This is the core analytic <a href="../../06_Financial-Advisory.html" class="wikilink">../../06_Financial-Advisory</a> asks for before external commitments.</p>
+<h2 id="seat-turn-framework">Seat-turn framework</h2>
+<p>Revenue = Seats × Turns × Avg-check-per-turn × Operating-hours-factor</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th style="text-align: right;">Cafe AM</th>
+<th style="text-align: right;">Bar PM Sun–Wed</th>
+<th style="text-align: right;">Bar PM Thu–Sat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Active seats</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">125</td>
+</tr>
+<tr>
+<td>Avg turns per seat per operating block</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">1.2</td>
+<td style="text-align: right;">1.8</td>
+</tr>
+<tr>
+<td>Avg check per turn</td>
+<td style="text-align: right;">160K</td>
+<td style="text-align: right;">280K</td>
+<td style="text-align: right;">390K</td>
+</tr>
+<tr>
+<td>Operating hours in block</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr>
+<td>Revenue per block</td>
+<td style="text-align: right;">22.4M</td>
+<td style="text-align: right;">33.6M</td>
+<td style="text-align: right;">87.8M</td>
+</tr>
+</tbody>
+</table>
+<p>Note: avg check per turn (390K) is lower than the 700K "avg check" in the plan because a single guest typically occupies a seat for one turn (~1h45m) — the plan's 700K implies a full evening's spend per seat, which is only true for 20–30% of guests (multi-drink + plates + tasting).</p>
+<h2 id="simulated-weekly-revenue">Simulated weekly revenue</h2>
+<table>
+<thead>
+<tr>
+<th>Day</th>
+<th style="text-align: right;">Cafe AM</th>
+<th style="text-align: right;">Bar PM Sun–Wed</th>
+<th style="text-align: right;">Bar PM Thu–Sat</th>
+<th style="text-align: right;">Day total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sun</td>
+<td style="text-align: right;">22.4M</td>
+<td style="text-align: right;">33.6M</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">56M</td>
+</tr>
+<tr>
+<td>Mon</td>
+<td style="text-align: right;">22.4M</td>
+<td style="text-align: right;">33.6M</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">56M</td>
+</tr>
+<tr>
+<td>Tue</td>
+<td style="text-align: right;">22.4M</td>
+<td style="text-align: right;">33.6M</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">56M</td>
+</tr>
+<tr>
+<td>Wed</td>
+<td style="text-align: right;">22.4M</td>
+<td style="text-align: right;">33.6M</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">56M</td>
+</tr>
+<tr>
+<td>Thu</td>
+<td style="text-align: right;">22.4M</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">87.8M</td>
+<td style="text-align: right;">110M</td>
+</tr>
+<tr>
+<td>Fri</td>
+<td style="text-align: right;">22.4M</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">87.8M</td>
+<td style="text-align: right;">110M</td>
+</tr>
+<tr>
+<td>Sat</td>
+<td style="text-align: right;">22.4M</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">87.8M</td>
+<td style="text-align: right;">110M</td>
+</tr>
+<tr>
+<td><strong>Week</strong></td>
+<td style="text-align: right;"><strong>156.8M</strong></td>
+<td style="text-align: right;"><strong>134.4M</strong></td>
+<td style="text-align: right;"><strong>263.4M</strong></td>
+<td style="text-align: right;"><strong>554.6M</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Monthly (4.33 weeks): <strong>~2,400M</strong> theoretical.</p>
+<h2 id="realization-factors">Realization factors</h2>
+<p>Theoretical ≠ actual. Stack realization losses:</p>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th style="text-align: right;">% hit</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ramp factor Y1</td>
+<td style="text-align: right;">−20%</td>
+<td>Under steady-state; 6-month ramp per advisory</td>
+</tr>
+<tr>
+<td>Seasonality (HCMC)</td>
+<td style="text-align: right;">−8%</td>
+<td>Slow Jan–Feb; strong Nov–Dec</td>
+</tr>
+<tr>
+<td>Weather (rooftop)</td>
+<td style="text-align: right;">−5%</td>
+<td>Monsoon hits ~30% of May–Oct days</td>
+</tr>
+<tr>
+<td>No-shows + walk-outs</td>
+<td style="text-align: right;">−3%</td>
+<td>Industry standard</td>
+</tr>
+<tr>
+<td>Discount + comp</td>
+<td style="text-align: right;">−2%</td>
+<td>Opening promotions + comps</td>
+</tr>
+<tr>
+<td><strong>Blended realization</strong></td>
+<td style="text-align: right;"><strong>~63%</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Simulated Y1 monthly: 2,400M × 0.63 = <strong>~1,512M</strong>
+Simulated Y1 annual: <strong>~18,000M</strong> before the ramp-profile distribution</p>
+<p>But <strong>Y1 is back-loaded</strong> because of the ramp. The shape:
+- Months 1–3: 50% of steady-state = ~750M/mo
+- Months 4–6: 70% = ~1,060M/mo
+- Months 7–9: 85% = ~1,280M/mo
+- Months 10–12: 100% = ~1,510M/mo</p>
+<p>Annual Y1 simulated total: <strong>(750×3 + 1060×3 + 1280×3 + 1510×3) = 13,800M</strong></p>
+<p>Which interestingly <strong>matches the model's 13.83B number</strong> — but only if you accept:
+- 63% blended realization
+- 6-month ramp to 85%
+- Reaching steady state by month 10</p>
+<p>If steady state slips to month 12+ (advisory base case): <strong>~12,500M</strong> — matching the advisory's figure.</p>
+<h2 id="sensitivity-table">Sensitivity table</h2>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Assumption change</th>
+<th style="text-align: right;">Y1 revenue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base (as above)</td>
+<td>—</td>
+<td style="text-align: right;">13,800M</td>
+</tr>
+<tr>
+<td>Slow ramp (+3 mo)</td>
+<td>Steady state month 13</td>
+<td style="text-align: right;">12,500M</td>
+</tr>
+<tr>
+<td>Check-size disappointment</td>
+<td>Thu–Sat check 340K instead of 390K</td>
+<td style="text-align: right;">12,000M</td>
+</tr>
+<tr>
+<td>Slow ramp + check-size</td>
+<td>Both of above</td>
+<td style="text-align: right;">10,800M</td>
+</tr>
+<tr>
+<td>Both + cafe underperforms</td>
+<td>Cafe AM at 70% of plan</td>
+<td style="text-align: right;">10,100M</td>
+</tr>
+<tr>
+<td>Upside</td>
+<td>Ramp fast + 420K check</td>
+<td style="text-align: right;">15,400M</td>
+</tr>
+</tbody>
+</table>
+<h2 id="what-the-simulation-tells-us">What the simulation tells us</h2>
+<ol>
+<li><strong>13.83B is achievable</strong> under base-case realization + the model's intended ramp. It is not a "stretch" scenario — it is the expected case.</li>
+<li><strong>12–13B is the honest Y1 range.</strong> Anything below is structural failure (check-size, ramp, or cafe).</li>
+<li><strong>The 700K avg check is not the right question.</strong> The right question is the 390K per-turn check. That is what monthly menu engineering should target.</li>
+<li><strong>6-month ramp is the pivot assumption.</strong> It changes EBITDA timing materially and should be the scenario shown to investors.</li>
+</ol>
+<h2 id="see-also">See also</h2>
+<ul>
+<li><a href="../../06_Financial-Advisory.html" class="wikilink">../../06_Financial-Advisory</a> — calls for this analysis explicitly</li>
+<li><a href="../../01_Planning/Unit-Economics.html" class="wikilink">../../01_Planning/Unit-Economics</a> — per-turn economics</li>
+<li><a href="../../04_Operations/Revenue-Plan.html" class="wikilink">../Revenue-Plan</a> — top-down plan being stress-tested</li>
+</ul>
+</article>
+<footer class="page-footer">
+<div>CUR8 project wiki · generated 2026-04-20</div>
+<div class="breadcrumb-meta">04 Operations / Reports / 03 Daypart Simulation</div>
+</footer>
+</main>
+</div>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Detailed Design — CUR8 Wiki</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<button class="menu-toggle" aria-label="Toggle menu" onclick="document.body.classList.toggle('nav-open')">☰</button>
+<div class="layout">
+<nav class="sidebar">
+<div class="sidebar-brand"><a href="../index.html">CUR8</a><span class="sidebar-sub">Project Wiki</span></div>
+<ul class="nav-top">
+<li class=""><a href="../index.html">Home</a></li>
+<li class=""><a href="../Glossary.html">Glossary</a></li>
+</ul>
+<div class="nav-section"><div class="nav-section-label">Overview</div><ul>
+<li class=""><a href="../00_Overview/Concept.html">Concept</a></li>
+<li class=""><a href="../00_Overview/Current-Status.html">Current Status</a></li>
+<li class=""><a href="../00_Overview/Key-Numbers.html">Key Numbers</a></li>
+<li class=""><a href="../00_Overview/Timeline.html">Timeline</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-label">Planning</div><ul>
+<li class=""><a href="../01_Planning/Business-Plan.html">Business Plan</a></li>
+<li class=""><a href="../01_Planning/Finance-Model.html">Finance Model</a></li>
+<li class=""><a href="../01_Planning/Unit-Economics.html">Unit Economics</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-label">Design</div><ul>
+<li class=" current"><a href="../02_Design/Detailed-Design.html">Detailed Design</a></li>
+<li class=""><a href="../02_Design/Floor-Layout.html">Floor Layout</a></li>
+<li class=""><a href="../02_Design/Moodboards.html">Moodboards</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-label">Construction</div><ul>
+<li class=""><a href="../03_Construction/BOQ.html">BOQ</a></li>
+<li class=""><a href="../03_Construction/Construction-Budget.html">Construction Budget</a></li>
+<li class=""><a href="../03_Construction/Construction-Timeline.html">Construction Timeline</a></li>
+<li class=""><a href="../03_Construction/Payment-Schedule.html">Payment Schedule</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-label">Operations</div><ul>
+<li class="nested"><a href="../04_Operations/Reports/01_Risk-Analysis.html">Risk Analysis</a></li>
+<li class="nested"><a href="../04_Operations/Reports/02_Revenue-Diversification.html">Revenue Diversification</a></li>
+<li class="nested"><a href="../04_Operations/Reports/03_Daypart-Simulation.html">Daypart Simulation</a></li>
+<li class="nested"><a href="../04_Operations/Reports/04_HR-Rampup.html">HR Rampup</a></li>
+<li class=""><a href="../04_Operations/Equipment.html">Equipment</a></li>
+<li class=""><a href="../04_Operations/Licenses.html">Licenses</a></li>
+<li class=""><a href="../04_Operations/Menu.html">Menu</a></li>
+<li class=""><a href="../04_Operations/OpEx.html">OpEx</a></li>
+<li class=""><a href="../04_Operations/PnL-Operations.html">PnL Operations</a></li>
+<li class=""><a href="../04_Operations/Revenue-Plan.html">Revenue Plan</a></li>
+<li class=""><a href="../04_Operations/Shifts.html">Shifts</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-label">Research</div><ul>
+<li class=""><a href="../05_Research/Competitor-Landscape.html">Competitor Landscape</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-label">People</div><ul>
+<li class=""><a href="../People/Suppliers.html">Suppliers</a></li>
+<li class=""><a href="../People/Team.html">Team</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-label">Advisory</div><ul>
+<li class=""><a href="../06_Financial-Advisory.html">Financial Advisory</a></li>
+</ul></div>
+</nav>
+<main class="content">
+<article class="prose">
+<h1 id="detailed-design">Detailed Design</h1>
+<blockquote>
+<p>Parent: <a href="../index.html" class="wikilink">Home</a> · Source: <code>02_design/260417 DD/</code> · Related: <a href="../02_Design/Floor-Layout.html" class="wikilink">Floor-Layout</a>, <a href="../02_Design/Moodboards.html" class="wikilink">Moodboards</a></p>
+</blockquote>
+<h2 id="drawing-set">Drawing set</h2>
+<p>The <code>260417 DD</code> drawing set is the Design Development package issued 2026-04-17 (referenced by its filename prefix). It is the authoritative reference for construction.</p>
+<p>Package contents (as delivered):</p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Architectural floor plans</td>
+<td>Trệt + Lầu 1–4, scaled plans with dimensions. ⚠️ The level at +11.600 m is labeled "Sân Thượng" in the current DD set but is now programmed as enclosed Lầu 4 (kitchen) — drawings need to be updated</td>
+</tr>
+<tr>
+<td>Architectural sections</td>
+<td>Vertical slices showing floor-to-floor heights</td>
+</tr>
+<tr>
+<td>Reflected ceiling plans</td>
+<td>Lighting, HVAC, acoustic panels</td>
+</tr>
+<tr>
+<td>Interior elevations</td>
+<td>Bar, banquette, DJ booth, Sound Lab walls</td>
+</tr>
+<tr>
+<td>FF&amp;E layouts</td>
+<td>Furniture positions with clearance annotations</td>
+</tr>
+<tr>
+<td>Finish schedules</td>
+<td>Materials by room</td>
+</tr>
+<tr>
+<td>Lighting plan</td>
+<td>Fixture counts, dimming zones, track layout</td>
+</tr>
+<tr>
+<td>Electrical (coordination)</td>
+<td>Outlets, AV power, kitchen equipment</td>
+</tr>
+<tr>
+<td>Mechanical (coordination)</td>
+<td>HVAC zoning, ventilation (kitchen + rooftop)</td>
+</tr>
+<tr>
+<td>Acoustic notes</td>
+<td>Sound Lab isolation, ceiling treatment, floor-floor decoupling</td>
+</tr>
+</tbody>
+</table>
+<h2 id="status">Status</h2>
+<p>🟢 Issued for construction · minor coordination items open</p>
+<p>Known open items as of 2026-04-20:
+- Weather protection for the Lầu 2 front open-air terrace (overhang / retractable awning — architect + contractor)
+- Sound Lab speaker pre-wire routing (architect + AV)
+- Kitchen hood CFM confirmation + exhaust routing from Lầu 4 through/around the Mái slab (MEP + contractor)
+- Service lift capacity / speed — critical with kitchen on Lầu 4 (architect + MEP)
+- Disabled access for upper floors (code compliance review)
+- ⚠️ <strong>Program-by-floor mismatch with <a href="../02_Design/Floor-Layout.html" class="wikilink">Floor-Layout</a></strong> — the DD set labels the +11.600 level "Sân Thượng" and draws it open-air, but the owner's program redesignates that level as enclosed Lầu 4 (kitchen/BOH). Drawings need to be reissued. Separately, the DD drawings show cafe on Trệt (GF) and Sound Lab on Lầu 1 (1F), not the stack some earlier docs assumed. Wiki updated 2026-04-20.</p>
+<p>None of these block the 20-Apr construction start, but all need to be resolved within the first 2 weeks.</p>
+<h2 id="design-dna">Design DNA</h2>
+<p>From <a href="../02_Design/Moodboards.html" class="wikilink">Moodboards</a>:</p>
+<ul>
+<li>Material language: raw concrete + warm timber + brushed brass + wool acoustic panels</li>
+<li>Color: oxblood, mustard, charcoal — warm low-light palette</li>
+<li>Lighting: layered, dimmable, track + pendant + sconce; no fluorescent</li>
+<li>Acoustic: Sound Lab treated to NC-20; PM bar treated to NC-30; cafe untreated</li>
+<li>Signage: minimal, one wordmark, house serif used sparingly</li>
+</ul>
+<h2 id="floor-by-floor">Floor-by-floor</h2>
+<p>See <a href="../02_Design/Floor-Layout.html" class="wikilink">Floor-Layout</a> for the full current program. Summary per owner 2026-04-20:</p>
+<table>
+<thead>
+<tr>
+<th>Floor</th>
+<th>Program</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trệt (GF)</td>
+<td>Cafe (39 m²) + WC + storage</td>
+</tr>
+<tr>
+<td>Lầu 1 (1F)</td>
+<td>Sound Lab (45 m²) + WC</td>
+</tr>
+<tr>
+<td>Lầu 1'</td>
+<td>Split / partial level (+550 mm) — function TBD</td>
+</tr>
+<tr>
+<td>Lầu 2 (2F)</td>
+<td>Front open-air terrace (PM lounge) + rear vinyl shop</td>
+</tr>
+<tr>
+<td>Lầu 3 (3F)</td>
+<td>Office (set-back, red-box footprint)</td>
+</tr>
+<tr>
+<td>Lầu 4 (4F)</td>
+<td>Kitchen / BOH (set-back, red-box footprint) — DD still labels this level "Sân Thượng"; needs re-issue</td>
+</tr>
+<tr>
+<td>Mái</td>
+<td>Structural roof, not occupied</td>
+</tr>
+</tbody>
+</table>
+<p>⚠️ Previous revisions of this table went through two wrong states: first "GF / 1F / 2F / 3F / 4F / R with a fictional 4F BOH on a floor that didn't exist", then "no Lầu 4, rooftop lounge on Sân Thượng". Both superseded. The real plan is above. See <a href="../02_Design/Floor-Layout.html" class="wikilink">Floor-Layout</a> for reconciliation items that still need architect sign-off.</p>
+<h2 id="see-also">See also</h2>
+<ul>
+<li><a href="../02_Design/Floor-Layout.html" class="wikilink">Floor-Layout</a> — program by floor</li>
+<li><a href="../02_Design/Moodboards.html" class="wikilink">Moodboards</a> — visual reference language</li>
+<li><a href="../03_Construction/BOQ.html" class="wikilink">03_Construction/BOQ</a> — what the drawings translate to in construction cost</li>
+<li><a href="../03_Construction/Construction-Timeline.html" class="wikilink">03_Construction/Construction-Timeline</a> — build schedule</li>
+</ul>
+</article>
+<footer class="page-footer">
+<div>CUR8 project wiki · generated 2026-04-20</div>
+<div class="breadcrumb-meta">02 Design / Detailed Design</div>
+</footer>
+</main>
+</div>
+</body>
+</html>
