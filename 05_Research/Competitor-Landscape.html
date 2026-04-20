@@ -1,369 +1,388 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Competitor Landscape — CUR8 Wiki</title>
-<link rel="stylesheet" href="../style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competitor Landscape — CUR8</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --accent: #e94560;
+            --success: #00d26a;
+            --warning: #ffb830;
+            --danger: #ff4757;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: #333; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: linear-gradient(135deg, var(--primary) 0%, #16213e 100%); color: white; padding: 40px 20px; text-align: center; }
+        header h1 { font-size: 2em; margin-bottom: 10px; }
+        header p { opacity: 0.9; }
+        .badge { display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 0.85em; margin: 5px; }
+        .badge-high { background: var(--danger); color: white; }
+        .badge-med { background: var(--warning); color: #333; }
+        .badge-low { background: var(--success); color: white; }
+        .section { background: var(--card-bg); margin: 20px 0; padding: 25px; border-radius: 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.08); }
+        h2 { color: var(--primary); border-bottom: 3px solid var(--accent); padding-bottom: 10px; margin-bottom: 20px; }
+        h3 { color: #16213e; margin: 20px 0 10px; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #eee; }
+        th { background: #f8f9fa; font-weight: 600; color: var(--primary); }
+        tr:hover { background: #fafafa; }
+        .venue-card { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 20px; background: #f8f9fa; border-radius: 10px; margin: 15px 0; border-left: 4px solid var(--accent); }
+        .venue-meta { display: flex; flex-direction: column; gap: 8px; }
+        .venue-meta strong { font-size: 1.2em; color: var(--primary); }
+        .venue-meta span { color: #666; font-size: 0.9em; }
+        .threat-high { border-left-color: var(--danger); }
+        .threat-med { border-left-color: var(--warning); }
+        .threat-low { border-left-color: var(--success); }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 20px 0; }
+        .stat-box { background: var(--primary); color: white; padding: 20px; border-radius: 10px; text-align: center; }
+        .stat-box strong { display: block; font-size: 2em; color: var(--accent); }
+        .instagram-link { display: inline-flex; align-items: center; gap: 5px; color: #e1306c; text-decoration: none; font-weight: 500; }
+        .instagram-link:hover { text-decoration: underline; }
+        .map-placeholder { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 300px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2em; }
+        .revenue-estimate { background: #e8f5e9; border-left: 4px solid var(--success); padding: 15px; margin: 10px 0; border-radius: 0 8px 8px 0; }
+        .revenue-estimate.high { background: #ffebee; border-left-color: var(--danger); }
+        .revenue-estimate.med { background: #fff3e0; border-left-color: var(--warning); }
+        .warning-box { background: #fff3cd; border: 1px solid #ffc107; padding: 15px; border-radius: 8px; margin: 15px 0; }
+        .tag { display: inline-block; background: #e3f2fd; color: #1565c0; padding: 3px 10px; border-radius: 15px; font-size: 0.8em; margin: 2px; }
+        @media (max-width: 768px) { .venue-card { grid-template-columns: 1fr; } }
+    </style>
 </head>
 <body>
-<button class="menu-toggle" aria-label="Toggle menu" onclick="document.body.classList.toggle('nav-open')">☰</button>
-<div class="layout">
-<nav class="sidebar">
-<div class="sidebar-brand"><a href="../index.html">CUR8</a><span class="sidebar-sub">Project Wiki</span></div>
-<ul class="nav-top">
-<li class=""><a href="../index.html">Home</a></li>
-<li class=""><a href="../Glossary.html">Glossary</a></li>
-</ul>
-<div class="nav-section"><div class="nav-section-label">Overview</div><ul>
-<li class=""><a href="../00_Overview/Concept.html">Concept</a></li>
-<li class=""><a href="../00_Overview/Current-Status.html">Current Status</a></li>
-<li class=""><a href="../00_Overview/Key-Numbers.html">Key Numbers</a></li>
-<li class=""><a href="../00_Overview/Timeline.html">Timeline</a></li>
-</ul></div>
-<div class="nav-section"><div class="nav-section-label">Planning</div><ul>
-<li class=""><a href="../01_Planning/Business-Plan.html">Business Plan</a></li>
-<li class=""><a href="../01_Planning/Finance-Model.html">Finance Model</a></li>
-<li class=""><a href="../01_Planning/Unit-Economics.html">Unit Economics</a></li>
-</ul></div>
-<div class="nav-section"><div class="nav-section-label">Design</div><ul>
-<li class=""><a href="../02_Design/Detailed-Design.html">Detailed Design</a></li>
-<li class=""><a href="../02_Design/Floor-Layout.html">Floor Layout</a></li>
-<li class=""><a href="../02_Design/Moodboards.html">Moodboards</a></li>
-</ul></div>
-<div class="nav-section"><div class="nav-section-label">Construction</div><ul>
-<li class=""><a href="../03_Construction/BOQ.html">BOQ</a></li>
-<li class=""><a href="../03_Construction/Construction-Budget.html">Construction Budget</a></li>
-<li class=""><a href="../03_Construction/Construction-Timeline.html">Construction Timeline</a></li>
-<li class=""><a href="../03_Construction/Payment-Schedule.html">Payment Schedule</a></li>
-</ul></div>
-<div class="nav-section"><div class="nav-section-label">Operations</div><ul>
-<li class="nested"><a href="../04_Operations/Reports/01_Risk-Analysis.html">Risk Analysis</a></li>
-<li class="nested"><a href="../04_Operations/Reports/02_Revenue-Diversification.html">Revenue Diversification</a></li>
-<li class="nested"><a href="../04_Operations/Reports/03_Daypart-Simulation.html">Daypart Simulation</a></li>
-<li class="nested"><a href="../04_Operations/Reports/04_HR-Rampup.html">HR Rampup</a></li>
-<li class=""><a href="../04_Operations/Equipment.html">Equipment</a></li>
-<li class=""><a href="../04_Operations/Licenses.html">Licenses</a></li>
-<li class=""><a href="../04_Operations/Menu.html">Menu</a></li>
-<li class=""><a href="../04_Operations/OpEx.html">OpEx</a></li>
-<li class=""><a href="../04_Operations/PnL-Operations.html">PnL Operations</a></li>
-<li class=""><a href="../04_Operations/Revenue-Plan.html">Revenue Plan</a></li>
-<li class=""><a href="../04_Operations/Shifts.html">Shifts</a></li>
-</ul></div>
-<div class="nav-section"><div class="nav-section-label">Research</div><ul>
-<li class=" current"><a href="../05_Research/Competitor-Landscape.html">Competitor Landscape</a></li>
-</ul></div>
-<div class="nav-section"><div class="nav-section-label">People</div><ul>
-<li class=""><a href="../People/Suppliers.html">Suppliers</a></li>
-<li class=""><a href="../People/Team.html">Team</a></li>
-</ul></div>
-<div class="nav-section"><div class="nav-section-label">Advisory</div><ul>
-<li class=""><a href="../06_Financial-Advisory.html">Financial Advisory</a></li>
-</ul></div>
-</nav>
-<main class="content">
-<article class="prose">
-<h1 id="competitor-landscape">Competitor Landscape</h1>
-<blockquote>
-<p>Parent: <a href="../index.html" class="wikilink">Home</a> · Source: <code>05_research/competitor_landscape_dashboard.html</code> · Related: <a href="../00_Overview/Concept.html" class="wikilink">../00_Overview/Concept</a>, <a href="../01_Planning/Business-Plan.html" class="wikilink">../01_Planning/Business-Plan</a></p>
-</blockquote>
-<h2 id="executive-view">Executive view</h2>
-<p>CUR8 sits in a defensible niche: <strong>multi-daypart hospitality with a dedicated audiophile listening room</strong> in District 1, HCMC. Competitors approach from three directions, but <strong>no single competitor matches the full program</strong> (cafe + open-air lounge + Sound Lab + vinyl shop, stacked in one building).</p>
-<blockquote>
-<p>⚠️ Per 2026-04-20 restack the "rooftop" pillar is now the Lầu 2 front open-air terrace (same outdoor-feel concept, different floor). Phrasing below that talks about "rooftop" as a separate pillar is pending revision — tracked in <a href="../index.html" class="wikilink">Home</a>.</p>
-</blockquote>
-<h2 id="direct-competitors-vietnam">Direct competitors — Vietnam</h2>
-<h3 id="closest-rival-kanpai-hcmc">Closest rival: Kanpai (HCMC)</h3>
-<ul>
-<li><strong>Format:</strong> Japanese-style cocktail listening bar, single room</li>
-<li><strong>Strength:</strong> Excellent music curation, strong cocktail program, established brand</li>
-<li><strong>Weakness:</strong> Single-daypart (PM only), no cafe, no rooftop, cannot serve mixed-purpose visit</li>
-<li><strong>CUR8 advantage:</strong> Multi-daypart + Sound Lab is dedicated room, not a corner</li>
-</ul>
-<h3 id="other-vn-listening-specialty-venues">Other VN listening / specialty venues</h3>
-<table>
-<thead>
-<tr>
-<th>Venue</th>
-<th>Location</th>
-<th>Format</th>
-<th>Threat level</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Rabbit Hole</td>
-<td>HCMC D1</td>
-<td>Speakeasy cocktail bar</td>
-<td>Low — different format</td>
-</tr>
-<tr>
-<td>Ngõ Books</td>
-<td>HCMC</td>
-<td>Literary cafe + occasional listening</td>
-<td>Low — small scale</td>
-</tr>
-<tr>
-<td>Snuffbox</td>
-<td>HCMC</td>
-<td>Cocktail bar</td>
-<td>Low — no listening</td>
-</tr>
-<tr>
-<td>The Rooftop</td>
-<td>Hanoi</td>
-<td>Rooftop bar</td>
-<td>Low — different city</td>
-</tr>
-<tr>
-<td>Tâm Coffee Roasters</td>
-<td>HCMC</td>
-<td>Specialty cafe chain</td>
-<td>Low — cafe only</td>
-</tr>
-<tr>
-<td>Standing Bar</td>
-<td>Hanoi</td>
-<td>Standing cocktail bar</td>
-<td>Low — different city, different format</td>
-</tr>
-<tr>
-<td>Nê Cocktail Bar</td>
-<td>Hanoi</td>
-<td>Vietnamese cocktail bar</td>
-<td>Low — different city</td>
-</tr>
-</tbody>
-</table>
-<h2 id="local-competitors-within-500m-of-49-pho-uc-chinh">Local competitors within 500m of 49 Phó Đức Chính</h2>
-<table>
-<thead>
-<tr>
-<th>Venue</th>
-<th style="text-align: right;">Distance</th>
-<th>Format</th>
-<th>Threat</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Jackalope</strong></td>
-<td style="text-align: right;">50m</td>
-<td>Cocktail bar (PM, multi-floor)</td>
-<td><strong>HIGH</strong> — closest, similar PM crowd</td>
-</tr>
-<tr>
-<td>Stir</td>
-<td style="text-align: right;">500m</td>
-<td>Cocktail bar with food</td>
-<td><strong>HIGH</strong> — overlapping menu philosophy</td>
-</tr>
-<tr>
-<td>Mizuwari</td>
-<td style="text-align: right;">400m</td>
-<td>Japanese highball/whisky bar</td>
-<td><strong>MED-HIGH</strong> — overlapping audiophile-adjacent crowd</td>
-</tr>
-<tr>
-<td>(others within radius — independent cafes, restaurants, hotel bars)</td>
-<td style="text-align: right;"></td>
-<td></td>
-<td>LOW–MED</td>
-</tr>
-</tbody>
-</table>
-<p><strong>The 50m Jackalope reality</strong> is the most important fact in this section. CUR8 will share foot traffic with Jackalope every PM. Differentiation must be physically visible from the street: signage, room visible through window, listening session program publicly visible.</p>
-<h2 id="international-benchmarks">International benchmarks</h2>
-<table>
-<thead>
-<tr>
-<th>Venue</th>
-<th>City</th>
-<th>Why it matters for CUR8</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Kissa Sakaiki</td>
-<td>Tokyo</td>
-<td>Origin format — defines "kissa" pacing</td>
-</tr>
-<tr>
-<td>Bar Music</td>
-<td>Tokyo</td>
-<td>Cocktail + music curation balance</td>
-</tr>
-<tr>
-<td>Bar Trench</td>
-<td>Tokyo</td>
-<td>Cocktail + music subtle integration</td>
-</tr>
-<tr>
-<td>In Sheep's Clothing</td>
-<td>LA</td>
-<td>Modern listening bar with adjacent restaurant</td>
-</tr>
-<tr>
-<td>Public Records</td>
-<td>Brooklyn</td>
-<td>Listening room + cafe + restaurant — closest to CUR8's multi-program model</td>
-</tr>
-<tr>
-<td>Eavesdrop</td>
-<td>Brooklyn</td>
-<td>Listening bar with focus</td>
-</tr>
-<tr>
-<td>Spiritland</td>
-<td>London</td>
-<td>Multi-location listening bar — operationalized</td>
-</tr>
-<tr>
-<td>Brilliant Corners</td>
-<td>London</td>
-<td>Listening + restaurant — Public Records progenitor</td>
-</tr>
-<tr>
-<td>The Standing Room</td>
-<td>Brooklyn</td>
-<td>Standing-only listening bar</td>
-</tr>
-<tr>
-<td>Tone Studio</td>
-<td>Toronto</td>
-<td>Dedicated audiophile bar</td>
-</tr>
-<tr>
-<td>Cafe Oto</td>
-<td>London</td>
-<td>Music + cafe (live programming variant)</td>
-</tr>
-<tr>
-<td>(10–15 more international references)</td>
-<td>various</td>
-<td>Curation, programming, room shape, service model</td>
-</tr>
-</tbody>
-</table>
-<h2 id="10-market-gaps-where-cur8-is-contending-to-win">10 market gaps (where CUR8 is contending to win)</h2>
-<ol>
-<li><strong>Multi-daypart audiophile room</strong> — no HCMC competitor combines cafe + bar + listening room</li>
-<li><strong>Vietnamese-led music curation</strong> — most listening bars in HCMC are Japanese pastiche</li>
-<li><strong>Sound Lab as bookable program</strong> — most listening rooms are walk-in</li>
-<li><strong>Rooftop + listening</strong> — combining rooftop social and audiophile precision is rare</li>
-<li><strong>Vietnamese coffee + global cocktail program</strong> — most venues do one or the other</li>
-<li><strong>District 1 specialty cafe with PM bar legitimacy</strong> — local cafes don't transition to cocktails</li>
-<li><strong>18-staff venue with single-brand discipline</strong> — local competitors are smaller or franchise</li>
-<li><strong>Listening bar that opens for AM business</strong> — recovers fixed cost across 14 hours</li>
-<li><strong>Curated tasting menu paired with vinyl</strong> — rare format</li>
-<li><strong>Vinyl club / membership recurring revenue</strong> — virtually no Vietnamese venue does this</li>
-</ol>
-<h2 id="positioning-framework">Positioning framework</h2>
-<table>
-<thead>
-<tr>
-<th>Axis</th>
-<th>CUR8</th>
-<th>Kanpai</th>
-<th>Jackalope</th>
-<th>Stir</th>
-<th>Mizuwari</th>
-<th>Public Records (intl ref)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Cafe daypart</td>
-<td>✅</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-<td>✅</td>
-</tr>
-<tr>
-<td>Cocktail bar</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
-<tr>
-<td>Dedicated listening room</td>
-<td>✅</td>
-<td>partial</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-<td>✅</td>
-</tr>
-<tr>
-<td>Rooftop</td>
-<td>✅</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-</tr>
-<tr>
-<td>Vietnamese identity</td>
-<td>✅</td>
-<td>partial</td>
-<td>✅</td>
-<td>✅</td>
-<td>❌</td>
-<td>n/a</td>
-</tr>
-<tr>
-<td>Tasting / pairing format</td>
-<td>✅</td>
-<td>❌</td>
-<td>❌</td>
-<td>partial</td>
-<td>❌</td>
-<td>✅</td>
-</tr>
-<tr>
-<td>Membership / recurring</td>
-<td>✅ planned</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-<td>✅</td>
-</tr>
-</tbody>
-</table>
-<h2 id="competitive-risks">Competitive risks</h2>
-<ol>
-<li><strong>Jackalope upgrade</strong> — if Jackalope adds a listening room, our differentiator narrows. <strong>Probability: medium, 12–18mo out</strong></li>
-<li><strong>New Kanpai-style entrant in D1</strong> — possible given HCMC market growth. <strong>Probability: medium-high, 6–18mo</strong></li>
-<li><strong>Hotel bar program upgrade</strong> — Park Hyatt or Reverie could add a listening venue. <strong>Probability: low, 24mo+</strong></li>
-<li><strong>Coffee chains expanding into PM</strong> — unlikely to land the audiophile crowd. <strong>Probability: low</strong></li>
-</ol>
-<h2 id="defensive-moves">Defensive moves</h2>
-<ul>
-<li><strong>Lock acoustic spec</strong> — Sound Lab is the moat</li>
-<li><strong>Vinyl club early</strong> — recurring revenue + community lock-in</li>
-<li><strong>Membership / pre-paid programs</strong> — brand stickiness</li>
-<li><strong>Curate visible programming</strong> — listening sessions on calendar 8 weeks out</li>
-<li><strong>Press cycle</strong> — establish first-mover narrative with launch coverage</li>
-</ul>
-<h2 id="see-also">See also</h2>
-<ul>
-<li><a href="../00_Overview/Concept.html" class="wikilink">../00_Overview/Concept</a> — what we're positioning</li>
-<li><a href="../01_Planning/Business-Plan.html" class="wikilink">../01_Planning/Business-Plan</a> — customer model</li>
-<li><a href="../06_Financial-Advisory.html" class="wikilink">../06_Financial-Advisory</a> — competition is one of the 5 advisory recommendations to address</li>
-</ul>
-</article>
-<footer class="page-footer">
-<div>CUR8 project wiki · generated 2026-04-20</div>
-<div class="breadcrumb-meta">05 Research / Competitor Landscape</div>
-</footer>
-</main>
-</div>
+    <header>
+        <div class="container">
+            <h1>🏪 Competitor Landscape</h1>
+            <p>1km Radius Analysis from 49 Phó Đức Chính, District 1, HCMC</p>
+            <p style="margin-top:15px; font-size:0.9em; opacity:0.8;">Last Updated: 2026-04-20 | Data: Foody.vn, Instagram, Connect Saigon</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Summary Stats -->
+        <div class="section">
+            <h2>📊 Quick Summary</h2>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <strong>7</strong>
+                    <span>Competitors Found</span>
+                </div>
+                <div class="stat-box">
+                    <strong>3</strong>
+                    <span>High Threat</span>
+                </div>
+                <div class="stat-box">
+                    <strong>2</strong>
+                    <span>Med Threat</span>
+                </div>
+                <div class="stat-box">
+                    <strong>2</strong>
+                    <span>Low Threat</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Warning Box -->
+        <div class="warning-box">
+            <strong>⚠️ Critical Finding:</strong> Jackalope Bar is only <strong>50m</strong> from CUR8 location. This is the most important competitive insight. Differentiation must be physically visible from the street.
+        </div>
+
+        <!-- Map -->
+        <div class="section">
+            <h2>📍 Competitor Map (1km radius from 49 Phó Đức Chính)</h2>
+            <div class="map-placeholder">
+                <div style="text-align:center;">
+                    <p style="font-size:2em;">🗺️</p>
+                    <p>49 Phó Đức Chính — District 1, HCMC</p>
+                    <p style="font-size:0.8em; opacity:0.8; margin-top:10px;">7 competitors within 1km</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Direct Competitors on Phó Đức Chính -->
+        <div class="section">
+            <h2>🍸 On Phó Đức Chính Street (Direct Neighbors)</h2>
+            
+            <div class="venue-card threat-high">
+                <div class="venue-meta">
+                    <strong>Jackalope Bar</strong>
+                    <span>📍 56 Phó Đức Chính, Q1 — <strong>50m from CUR8</strong></span>
+                    <span>📱 @jackalope.bar | 📞 070.212.6666</span>
+                    <span>🕐 PM only (typically 17:00 - late)</span>
+                    <span>🎯 Cocktail bar, whisky chill, multi-floor</span>
+                    <span class="badge badge-high">HIGH THREAT</span>
+                </div>
+                <div>
+                    <h4>Instagram Analysis</h4>
+                    <p style="font-size:0.9em; color:#666;">Active Instagram presence with reel content showing cocktail atmosphere, whisky selection, and interior shots. Visual branding is strong with distinctive jackalope imagery.</p>
+                    <a href="https://www.instagram.com/jackalope.bar/" class="instagram-link" target="_blank">📸 @jackalope.bar →</a>
+                    
+                    <h4 style="margin-top:15px;">Estimated Revenue (Extrapolated)</h4>
+                    <div class="revenue-estimate high">
+                        <strong>Head Count:</strong> ~40-60 pax/night (multi-floor, ~80 capacity)<br>
+                        <strong>Drink Count:</strong> 2-3 cocktails/pax avg, ~120-180 drinks/night<br>
+                        <strong>Avg Ticket:</strong> ~180,000 VND (cocktail + service)<br>
+                        <strong>Nightly Revenue:</strong> ~22-32M VND<br>
+                        <strong>Monthly Est (22 days):</strong> ~500-700M VND
+                    </div>
+                </div>
+            </div>
+
+            <div class="venue-card threat-low">
+                <div class="venue-meta">
+                    <strong>Milano Coffee</strong>
+                    <span>📍 61 Phó Đức Chính, Q1 — 70m from CUR8</span>
+                    <span>🕐 Morning-Afternoon (cafe hours)</span>
+                    <span>🎯 Italian-style cafe chain</span>
+                    <span class="badge badge-low">LOW THREAT — Different daypart</span>
+                </div>
+                <div>
+                    <h4>Estimated Revenue</h4>
+                    <div class="revenue-estimate">
+                        <strong>Head Count:</strong> ~20-30 pax (small cafe format)<br>
+                        <strong>Drink Count:</strong> 1-2 drinks/pax<br>
+                        <strong>Avg Ticket:</strong> ~70,000 VND<br>
+                        <strong>Daily Est:</strong> ~1.5-2M VND<br>
+                        <strong>Monthly Est:</strong> ~45-60M VND<br>
+                        <em>Minimal overlap with CUR8 PM model</em>
+                    </div>
+                </div>
+            </div>
+
+            <div class="venue-card threat-low">
+                <div class="venue-meta">
+                    <strong>Guta Cafe</strong>
+                    <span>📍 66 Phó Đức Chính, Q1 — 80m from CUR8</span>
+                    <span>🕐 Morning-Afternoon</span>
+                    <span>🎯 Chain cafe, Vietnamese brand</span>
+                    <span class="badge badge-low">LOW THREAT — Daytime only</span>
+                </div>
+                <div>
+                    <h4>Estimated Revenue</h4>
+                    <div class="revenue-estimate">
+                        <strong>Head Count:</strong> ~15-25 pax<br>
+                        <strong>Avg Ticket:</strong> ~60,000 VND<br>
+                        <strong>Monthly Est:</strong> ~30-40M VND<br>
+                        <em>No PM bar service — minimal overlap</em>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Within 500m -->
+        <div class="section">
+            <h2>🚶 Within 500m Radius</h2>
+
+            <div class="venue-card threat-high">
+                <div class="venue-meta">
+                    <strong>Stir Bar</strong>
+                    <span>📍 ~500m from CUR8 (District 1 alleyway)</span>
+                    <span>📱 @stir.saigon | Threads: 896 followers</span>
+                    <span>🕐 PM-Early AM</span>
+                    <span>🎯 Speakeasy cocktail bar, Asia's 50 Best Bars (#58, 2024)</span>
+                    <span>🏆 Asia's 100 Best Bars recognition</span>
+                    <span class="badge badge-high">HIGH THREAT — Overlapping PM crowd</span>
+                </div>
+                <div>
+                    <h4>Instagram Analysis</h4>
+                    <p style="font-size:0.9em; color:#666;">Award-winning bar with strong social presence. Posts cocktail photography, bar atmosphere, and event content. High engagement from audiophile/specialty cocktail crowd.</p>
+                    <a href="https://www.threads.com/@stir.saigon" class="instagram-link" target="_blank">📸 @stir.saigon (Threads) →</a>
+                    
+                    <h4 style="margin-top:15px;">Estimated Revenue</h4>
+                    <div class="revenue-estimate high">
+                        <strong>Head Count:</strong> ~50-70 pax/night (intimate speakeasy, ~60 seats)<br>
+                        <strong>Drink Count:</strong> 2-3 cocktails/pax<br>
+                        <strong>Avg Ticket:</strong> ~220,000 VND (premium positioning)<br>
+                        <strong>Nightly Revenue:</strong> ~35-50M VND<br>
+                        <strong>Monthly Est (22 days):</strong> ~770M-1.1B VND<br>
+                        <em>Premium pricing = high revenue per cover</em>
+                    </div>
+                </div>
+            </div>
+
+            <div class="venue-card threat-high">
+                <div class="venue-meta">
+                    <strong>Mizuwari Social Club</strong>
+                    <span>📍 39 Ly Tu Trong, Ben Nghe, Q1 — ~400m from CUR8</span>
+                    <span>📱 @mizuwari.socialclub</span>
+                    <span>🕐 11:00 - 01:00 (daily)</span>
+                    <span>🎯 Japanese cocktail bar, highball/whisky focus</span>
+                    <span class="badge badge-high">HIGH THREAT — Japanese audiophile crowd overlap</span>
+                </div>
+                <div>
+                    <h4>Instagram Analysis</h4>
+                    <p style="font-size:0.9em; color:#666;">Elegant Japanese-inspired cocktail content. Posts seasonal cocktails, sake selection, and atmospheric bar photography. Strong aesthetic cohesion.</p>
+                    <a href="https://www.instagram.com/mizuwari.socialclub/" class="instagram-link" target="_blank">📸 @mizuwari.socialclub →</a>
+                    
+                    <h4 style="margin-top:15px;">Estimated Revenue</h4>
+                    <div class="revenue-estimate high">
+                        <strong>Head Count:</strong> ~40-60 pax/night (intimate setting)<br>
+                        <strong>Drink Count:</strong> 2-3 drinks/pax<br>
+                        <strong>Avg Ticket:</strong> ~250,000 VND (Japanese whisky premium)<br>
+                        <strong>Nightly Revenue:</strong> ~30-45M VND<br>
+                        <strong>Monthly Est:</strong> ~660M-990M VND<br>
+                        <em>Premium Japanese spirits = higher ticket</em>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Other Competitors -->
+        <div class="section">
+            <h2>📋 Other Nearby (500m-1km)</h2>
+            <table>
+                <tr>
+                    <th>Venue</th>
+                    <th>Address</th>
+                    <th>Type</th>
+                    <th>Est. Distance</th>
+                    <th>Threat</th>
+                </tr>
+                <tr>
+                    <td><strong>BetterU Health Kitchen & Juice Bar</strong></td>
+                    <td>61 Phó Đức Chính</td>
+                    <td>Health bar + food</td>
+                    <td>~70m</td>
+                    <td><span class="badge badge-low">LOW</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Chuối Coffee</strong></td>
+                    <td>58 Phó Đức Chính</td>
+                    <td>Specialty cafe</td>
+                    <td>~60m</td>
+                    <td><span class="badge badge-low">LOW</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Jenny's House</strong></td>
+                    <td>68 Phó Đức Chính</td>
+                    <td>Bakery cafe</td>
+                    <td>~80m</td>
+                    <td><span class="badge badge-low">LOW</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Muanuocep</strong></td>
+                    <td>58 Phó Đức Chính</td>
+                    <td>Healthy juice</td>
+                    <td>~60m</td>
+                    <td><span class="badge badge-low">LOW</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Cháo Mực</strong></td>
+                    <td>10 Phó Đức Chính</td>
+                    <td>Restaurant</td>
+                    <td>~300m</td>
+                    <td><span class="badge badge-low">LOW</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Lẩu Dê Tư Diệp</strong></td>
+                    <td>41 Phó Đức Chính</td>
+                    <td>Restaurant</td>
+                    <td>~250m</td>
+                    <td><span class="badge badge-low">LOW</span></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Revenue Comparison -->
+        <div class="section">
+            <h2>💰 Competitor Revenue Comparison (Monthly Estimates)</h2>
+            <table>
+                <tr>
+                    <th>Venue</th>
+                    <th>Est. Monthly Revenue</th>
+                    <th>Avg Ticket</th>
+                    <th>Format</th>
+                    <th>CUR8 Overlap</th>
+                </tr>
+                <tr style="background:#ffebee;">
+                    <td><strong>Mizuwari Social Club</strong></td>
+                    <td>~660M-990M VND</td>
+                    <td>~250K VND</td>
+                    <td>PM bar, Japanese</td>
+                    <td>HIGH — same PM audiophile crowd</td>
+                </tr>
+                <tr style="background:#ffebee;">
+                    <td><strong>Stir Bar</strong></td>
+                    <td>~770M-1.1B VND</td>
+                    <td>~220K VND</td>
+                    <td>Speakeasy, award-winning</td>
+                    <td>HIGH — same PM cocktail crowd</td>
+                </tr>
+                <tr style="background:#ffebee;">
+                    <td><strong>Jackalope Bar</strong></td>
+                    <td>~500M-700M VND</td>
+                    <td>~180K VND</td>
+                    <td>Cocktail bar, multi-floor</td>
+                    <td>HIGH — 50m distance, same street</td>
+                </tr>
+                <tr style="background:#fff3e0;">
+                    <td>Milano Coffee</td>
+                    <td>~45-60M VND</td>
+                    <td>~70K VND</td>
+                    <td>Cafe</td>
+                    <td>LOW — Daytime only</td>
+                </tr>
+                <tr style="background:#fff3e0;">
+                    <td>Guta Cafe</td>
+                    <td>~30-40M VND</td>
+                    <td>~60K VND</td>
+                    <td>Chain cafe</td>
+                    <td>LOW — Daytime only</td>
+                </tr>
+                <tr style="background:#e8f5e9;">
+                    <td>BetterU / Chuối / etc</td>
+                    <td>~10-20M VND each</td>
+                    <td>~50-70K VND</td>
+                    <td>Small cafe</td>
+                    <td>NONE — Different concept</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Key Insights -->
+        <div class="section">
+            <h2>💡 Key Competitive Insights</h2>
+            
+            <h3>3 Direct Threats (Immediate)</h3>
+            <ol style="margin:15px 0 15px 25px;">
+                <li><strong>Jackalope (50m)</strong> — Same PM bar crowd, same street. Visual differentiation from street is critical. Must have visible listening session schedule in window.</li>
+                <li><strong>Stir Bar (~500m)</strong> — Premium speakeasy with Asia's 50 Best recognition. CUR8 needs distinct identity from established cocktail crowd.</li>
+                <li><strong>Mizuwari (~400m)</strong> — Japanese cocktail focus attracts audiophile-adjacent crowd. CUR8's Sound Lab + Vietnamese identity is key differentiator.</li>
+            </ol>
+
+            <h3>Defensive Moves</h3>
+            <ul style="margin:15px 0 15px 25px;">
+                <li><strong>Visible programming</strong> — Listening session schedule in window 8+ weeks out</li>
+                <li><strong>Street presence</strong> — Signage, window display, ambient music audible outside</li>
+                <li><strong>Sound Lab booking</strong> — Dedicated audiophile room is the moat (no competitor has this)</li>
+                <li><strong>AM-PM continuity</strong> — Cafe by day → Bar by night → Sound Lab at night = 14hr daypart coverage (competitors do 1-2 slots max)</li>
+            </ul>
+        </div>
+
+        <!-- Data Sources -->
+        <div class="section">
+            <h2>📚 Data Sources</h2>
+            <ul style="margin:15px 0 15px 25px;">
+                <li>Foody.vn — venue listings, reviews, ratings</li>
+                <li>Instagram (@jackalope.bar, @mizuwari.socialclub, @stir.saigon)</li>
+                <li>Connect Saigon — venue profiles</li>
+                <li>Vietnam Coracle — bar guides</li>
+                <li>The Dot Magazine — HCMC bar/restaurant reviews</li>
+                <li>Asia's 50 Best Bars — official rankings</li>
+            </ul>
+            <p style="color:#999; font-size:0.85em; margin-top:15px;">
+                <em>Revenue estimates are extrapolated from venue capacity, average ticket estimates, and industry benchmarks. Actual figures may vary.</em>
+            </p>
+        </div>
+    </div>
+
+    <footer style="text-align:center; padding:30px; color:#666; font-size:0.9em;">
+        <p>CUR8 × GoodFellas — Competitor Landscape Analysis</p>
+        <p>Generated 2026-04-20</p>
+    </footer>
 </body>
 </html>
