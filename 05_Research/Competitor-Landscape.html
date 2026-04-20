@@ -7,401 +7,524 @@
     <link rel="stylesheet" href="../style.css">
     <style>
         :root {
-            --primary: #1a1a2e;
-            --accent: #e94560;
-            --success: #00d26a;
-            --warning: #ffb830;
-            --danger: #ff4757;
-            --bg: #f8f9fa;
-            --card-bg: #ffffff;
+            --bg: #faf8f4;
+            --surface: #ffffff;
+            --sidebar-bg: #1b1815;
+            --sidebar-fg: #d9d4cc;
+            --sidebar-muted: #8a837a;
+            --sidebar-accent: #e6b566;
+            --text: #1d1b19;
+            --text-muted: #6c6660;
+            --border: #e8e2d8;
+            --accent: #8a2b1f;
+            --accent-soft: #f5e9e6;
+            --warn-bg: #fff7e0;
+            --warn-border: #e6b566;
+            --code-bg: #f1ede5;
+            --link: #8a2b1f;
+            --success-bg: #e8f5e9;
+            --success-border: #4caf50;
+            --danger-bg: #ffebee;
+            --danger-border: #e94560;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: #333; line-height: 1.6; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        header { background: linear-gradient(135deg, var(--primary) 0%, #16213e 100%); color: white; padding: 40px 20px; text-align: center; }
-        header h1 { font-size: 2em; margin-bottom: 10px; }
-        header p { opacity: 0.9; }
-        .badge { display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 0.85em; margin: 3px; }
-        .badge-high { background: var(--danger); color: white; }
-        .badge-med { background: var(--warning); color: #333; }
-        .badge-low { background: var(--success); color: white; }
-        .section { background: var(--card-bg); margin: 20px 0; padding: 25px; border-radius: 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.08); }
-        h2 { color: var(--primary); border-bottom: 3px solid var(--accent); padding-bottom: 10px; margin-bottom: 20px; }
-        h3 { color: #16213e; margin: 20px 0 10px; }
-        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
-        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #eee; }
-        th { background: #f8f9fa; font-weight: 600; color: var(--primary); }
-        tr:hover { background: #fafafa; }
-        .venue-card { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 20px; background: #f8f9fa; border-radius: 10px; margin: 15px 0; border-left: 4px solid var(--accent); }
-        .venue-meta { display: flex; flex-direction: column; gap: 8px; }
-        .venue-meta strong { font-size: 1.2em; color: var(--primary); }
-        .venue-meta span { color: #666; font-size: 0.9em; }
-        .threat-high { border-left-color: var(--danger); }
-        .threat-med { border-left-color: var(--warning); }
-        .threat-low { border-left-color: var(--success); }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 20px 0; }
-        .stat-box { background: var(--primary); color: white; padding: 20px; border-radius: 10px; text-align: center; }
-        .stat-box strong { display: block; font-size: 2em; color: var(--accent); }
-        .instagram-link { display: inline-flex; align-items: center; gap: 5px; color: #e1306c; text-decoration: none; font-weight: 500; }
-        .instagram-link:hover { text-decoration: underline; }
-        .map-placeholder { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 300px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2em; }
-        .revenue-estimate { background: #e8f5e9; border-left: 4px solid var(--success); padding: 15px; margin: 10px 0; border-radius: 0 8px 8px 0; }
-        .revenue-estimate.high { background: #ffebee; border-left-color: var(--danger); }
-        .revenue-estimate.med { background: #fff3e0; border-left-color: var(--warning); }
-        .warning-box { background: #fff3cd; border: 1px solid #ffc107; padding: 15px; border-radius: 8px; margin: 15px 0; }
-        .insight-box { background: #e3f2fd; border-left: 4px solid #2196f3; padding: 15px; margin: 10px 0; border-radius: 0 8px 8px 0; }
-        .tag { display: inline-block; background: #e3f2fd; color: #1565c0; padding: 3px 10px; border-radius: 15px; font-size: 0.8em; margin: 2px; }
-        .category-box { background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 8px 0; }
-        .category-box h4 { color: var(--primary); margin-bottom: 5px; }
-        @media (max-width: 768px) { .venue-card { grid-template-columns: 1fr; } }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        .layout { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
+        .sidebar {
+            background: var(--sidebar-bg);
+            color: var(--sidebar-fg);
+            padding: 24px 16px 32px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            font-size: 14px;
+        }
+        .sidebar-brand { padding: 4px 8px 20px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 16px; }
+        .sidebar-brand a { color: var(--sidebar-accent); font-weight: 700; font-size: 20px; text-decoration: none; letter-spacing: 0.08em; }
+        .sidebar-sub { display: block; color: var(--sidebar-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; margin-top: 2px; }
+        .sidebar ul { list-style: none; padding: 0; margin: 0 0 12px; }
+        .sidebar a { display: block; padding: 5px 10px; color: var(--sidebar-fg); text-decoration: none; border-radius: 4px; transition: background 0.15s; }
+        .sidebar a:hover { background: rgba(255,255,255,0.06); color: #fff; }
+        .sidebar li.current > a { background: rgba(230,181,102,0.14); color: var(--sidebar-accent); font-weight: 600; }
+        .sidebar li.nested a { padding-left: 22px; font-size: 13px; color: var(--sidebar-muted); }
+        .nav-section { margin-top: 18px; }
+        .nav-section-label { color: var(--sidebar-muted); text-transform: uppercase; font-size: 11px; letter-spacing: 0.12em; padding: 0 10px 6px; font-weight: 600; }
+        .content { padding: 48px 56px 96px; max-width: 920px; width: 100%; }
+        .prose { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 40px 48px; }
+        .prose h1 { font-size: 32px; font-weight: 700; margin: 0 0 18px; padding-bottom: 10px; border-bottom: 2px solid var(--border); letter-spacing: -0.01em; }
+        .prose h2 { font-size: 22px; font-weight: 700; margin: 36px 0 12px; letter-spacing: -0.005em; }
+        .prose h3 { font-size: 17px; font-weight: 700; margin: 28px 0 10px; color: var(--text); }
+        .prose h4 { font-size: 15px; font-weight: 700; margin: 20px 0 8px; }
+        .prose p { margin: 10px 0; }
+        .prose a { color: var(--link); text-decoration: none; border-bottom: 1px dotted var(--link); }
+        .prose a:hover { color: var(--link-hover); border-bottom-style: solid; }
+        .prose ul, .prose ol { padding-left: 24px; }
+        .prose li { margin: 4px 0; }
+        .prose blockquote { background: var(--warn-bg); border-left: 4px solid var(--warn-border); padding: 12px 18px; margin: 16px 0; border-radius: 0 6px 6px 0; color: #5a4c1e; }
+        .prose blockquote p { margin: 6px 0; }
+        .prose blockquote strong { color: #4a3a10; }
+        .prose table { border-collapse: collapse; width: 100%; margin: 18px 0; font-size: 14.5px; background: var(--surface); }
+        .prose th, .prose td { padding: 9px 12px; text-align: left; border: 1px solid var(--border); vertical-align: top; }
+        .prose th { background: #f5efe5; font-weight: 700; letter-spacing: 0.02em; }
+        .prose tr:nth-child(even) td { background: #fbf8f2; }
+        .prose hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+        .badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.8em; font-weight: 600; }
+        .badge-high { background: var(--danger-bg); color: var(--danger-border); }
+        .badge-med { background: var(--warn-bg); color: #996600; }
+        .badge-low { background: var(--success-bg); color: #2e7d32; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 20px 0; }
+        .stat-box { background: var(--sidebar-bg); color: var(--sidebar-fg); padding: 16px; border-radius: 8px; text-align: center; }
+        .stat-box strong { display: block; font-size: 1.8em; color: var(--sidebar-accent); }
+        .stat-box span { font-size: 0.85em; color: var(--sidebar-muted); }
+        .insight-box { background: var(--accent-soft); border-left: 4px solid var(--accent); padding: 14px 18px; margin: 16px 0; border-radius: 0 6px 6px 0; }
+        .warning-box { background: var(--warn-bg); border-left: 4px solid var(--warn-border); padding: 14px 18px; margin: 16px 0; border-radius: 0 6px 6px 0; }
+        .category-box { background: #f5efe5; padding: 16px 20px; border-radius: 8px; margin: 12px 0; border: 1px solid var(--border); }
+        .category-box h4 { color: var(--accent); margin-bottom: 8px; }
+        .map-placeholder { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 280px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1em; text-align: center; }
+        .revenue-high { background: var(--danger-bg); border-left: 4px solid var(--danger-border); padding: 12px 16px; margin: 8px 0; border-radius: 0 6px 6px 0; }
+        .revenue-med { background: var(--warn-bg); border-left: 4px solid var(--warn-border); padding: 12px 16px; margin: 8px 0; border-radius: 0 6px 6px 0; }
+        .revenue-low { background: var(--success-bg); border-left: 4px solid var(--success-border); padding: 12px 16px; margin: 8px 0; border-radius: 0 6px 6px 0; }
+        .intl-card { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 16px; background: #f5efe5; border-radius: 8px; margin: 12px 0; border-left: 4px solid var(--sidebar-accent); }
+        .intl-card h4 { color: var(--accent); margin-bottom: 6px; }
+        .intl-card .city { color: var(--text-muted); font-size: 0.9em; }
+        .page-footer { margin-top: 40px; padding: 16px 0; color: var(--text-muted); font-size: 13px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+        @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } .sidebar { position: fixed; top: 0; left: -280px; width: 260px; transition: left 0.25s; z-index: 40; } .content { padding: 60px 20px 48px; } .prose { padding: 24px 20px; } .intl-card { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>🏪 Competitor Landscape</h1>
-            <p>1km Radius from 49 Phó Đức Chính, District 1, HCMC</p>
-            <p style="margin-top:15px; font-size:0.9em; opacity:0.8;">Last Updated: 2026-04-20 | Data: Verified venue survey</p>
-        </div>
-    </header>
-
-    <div class="container">
-        <!-- Summary Stats -->
-        <div class="section">
-            <h2>📊 Quick Summary</h2>
-            <div class="stats-grid">
-                <div class="stat-box">
-                    <strong>15+</strong>
-                    <span>Competitors</span>
-                </div>
-                <div class="stat-box">
-                    <strong>4</strong>
-                    <span>Café/Tea</span>
-                </div>
-                <div class="stat-box">
-                    <strong>3</strong>
-                    <span>Pub/Club</span>
-                </div>
-                <div class="stat-box">
-                    <strong>2</strong>
-                    <span>Restaurant+Bar</span>
-                </div>
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <a href="../index.html">CUR8 Project</a>
+                <span class="sidebar-sub">GoodFellas Venue</span>
             </div>
-        </div>
-
-        <!-- Street Map -->
-        <div class="section">
-            <h2>📍 Street Map</h2>
-            <div class="map-placeholder">
-                <div style="text-align:center;">
-                    <p style="font-size:2em;">🗺️</p>
-                    <p>49 Phó Đức Chính — District 1, HCMC</p>
-                    <p style="font-size:0.8em; opacity:0.8; margin-top:10px;">15+ competitors within 1km</p>
-                </div>
+            <ul>
+                <li><a href="../00_Overview/index.html">Overview</a></li>
+                <li class="nested"><a href="../00_Overview/Concept.html">Concept</a></li>
+                <li class="nested"><a href="../00_Overview/Current-Status.html">Current Status</a></li>
+                <li class="nested"><a href="../00_Overview/Key-Numbers.html">Key Numbers</a></li>
+                <li class="nested"><a href="../00_Overview/Timeline.html">Timeline</a></li>
+            </ul>
+            <ul>
+                <li><a href="../01_Planning/index.html">Planning</a></li>
+                <li class="nested"><a href="../01_Planning/Business-Plan.html">Business Plan</a></li>
+                <li class="nested"><a href="../01_Planning/Finance-Model.html">Finance Model</a></li>
+                <li class="nested"><a href="../01_Planning/Unit-Economics.html">Unit Economics</a></li>
+            </ul>
+            <ul>
+                <li><a href="../02_Design/index.html">Design</a></li>
+                <li class="nested"><a href="../02_Design/Detailed-Design.html">Detailed Design</a></li>
+                <li class="nested"><a href="../02_Design/Floor-Layout.html">Floor Layout</a></li>
+                <li class="nested"><a href="../02_Design/Moodboards.html">Moodboards</a></li>
+            </ul>
+            <ul>
+                <li><a href="../03_Construction/index.html">Construction</a></li>
+            </ul>
+            <ul>
+                <li><a href="../04_Operations/index.html">Operations</a></li>
+            </ul>
+            <ul>
+                <li class="current"><a href="index.html">Research</a></li>
+                <li class="nested"><a href="Competitor-Landscape.html">Competitor Landscape</a></li>
+            </ul>
+            <div class="nav-section">
+                <div class="nav-section-label">Project</div>
+                <ul>
+                    <li><a href="../Glossary.html">Glossary</a></li>
+                    <li><a href="../People/Team.html">Team</a></li>
+                </ul>
             </div>
-        </div>
+        </aside>
 
-        <!-- On Phó Đức Chính -->
-        <div class="section">
-            <h2>🛤️ On Phó Đức Chính Street</h2>
-            
-            <div class="category-box">
-                <h4>☕ Café / Tea Venues</h4>
+        <main class="content">
+            <article class="prose">
+                <h1>🏪 Competitor Landscape</h1>
+                <p><em>1km Radius Analysis from 49 Phó Đức Chính, District 1, HCMC</em></p>
+                <p><strong>Last Updated:</strong> 2026-04-20 | <strong>Data:</strong> Verified venue survey</p>
+
+                <!-- Quick Summary -->
+                <h2>📊 Quick Summary</h2>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <strong>15+</strong>
+                        <span>Competitors</span>
+                    </div>
+                    <div class="stat-box">
+                        <strong>4</strong>
+                        <span>Café/Tea</span>
+                    </div>
+                    <div class="stat-box">
+                        <strong>3</strong>
+                        <span>Pub/Club</span>
+                    </div>
+                    <div class="stat-box">
+                        <strong>2</strong>
+                        <span>Restaurant+Bar</span>
+                    </div>
+                </div>
+
+                <!-- Map -->
+                <h2>📍 Street Map</h2>
+                <div class="map-placeholder">
+                    <div>
+                        <p style="font-size:2em;">🗺️</p>
+                        <p>49 Phó Đức Chính — District 1, HCMC</p>
+                        <p style="font-size:0.8em; opacity:0.8; margin-top:8px;">15+ competitors within 1km</p>
+                    </div>
+                </div>
+
+                <!-- On Phó Đức Chính -->
+                <h2>🛤️ On Phó Đức Chính Street</h2>
+                
+                <div class="category-box">
+                    <h4>☕ Café / Tea Venues</h4>
+                    <table>
+                        <tr>
+                            <th>Venue</th>
+                            <th>Address</th>
+                            <th>Type</th>
+                            <th>Price Range</th>
+                            <th>Hours</th>
+                            <th>Threat</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Katinat</strong></td>
+                            <td>41 Phó Đức Chính</td>
+                            <td>Café/Trà chain</td>
+                            <td>30-100K VND</td>
+                            <td>All day</td>
+                            <td><span class="badge badge-high">HIGH</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Là Việt Coffee</strong></td>
+                            <td>60 Phó Đức Chính</td>
+                            <td>Specialty Café</td>
+                            <td>50-80K VND</td>
+                            <td>7AM-9PM</td>
+                            <td><span class="badge badge-med">MED</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>R.A.C Coffee & Beer</strong></td>
+                            <td>59 Phó Đức Chính</td>
+                            <td>Coffee + Beer hybrid</td>
+                            <td>40-100K VND</td>
+                            <td>Day-to-night</td>
+                            <td><span class="badge badge-high">HIGH</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Lalin's Coffee</strong></td>
+                            <td>Phó Đức Chính</td>
+                            <td>Café/Trà + Bánh</td>
+                            <td>30-70K VND</td>
+                            <td>Delivery-focused</td>
+                            <td><span class="badge badge-low">LOW</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nghệ Thuật Cafe</strong></td>
+                            <td>97A Phó Đức Chính</td>
+                            <td>Local Café</td>
+                            <td>30-60K VND</td>
+                            <td>Varies</td>
+                            <td><span class="badge badge-low">LOW</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mach Coffee</strong></td>
+                            <td>39 Phó Đức Chính</td>
+                            <td>Small Café</td>
+                            <td>30-60K VND</td>
+                            <td>Morning-day</td>
+                            <td><span class="badge badge-low">LOW</span></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Nguyễn Công Trứ -->
+                <h2>🚶 Nguyễn Công Trứ (1 Block Away)</h2>
+                
                 <table>
                     <tr>
                         <th>Venue</th>
                         <th>Address</th>
                         <th>Type</th>
-                        <th>Price Range</th>
                         <th>Hours</th>
                         <th>Threat</th>
                     </tr>
-                    <tr>
-                        <td><strong>Katinat</strong></td>
-                        <td>41 Phó Đức Chính</td>
-                        <td>Café/Trà chain</td>
-                        <td>30-100K VND</td>
-                        <td>All day</td>
+                    <tr style="background: var(--danger-bg);">
+                        <td><strong>Home Pub</strong></td>
+                        <td>58 Nguyễn Công Trứ</td>
+                        <td>Pub/Lounge</td>
+                        <td>Night-focused</td>
                         <td><span class="badge badge-high">HIGH</span></td>
                     </tr>
-                    <tr>
-                        <td><strong>Là Việt Coffee</strong></td>
-                        <td>60 Phó Đức Chính</td>
-                        <td>Specialty Café</td>
-                        <td>50-80K VND</td>
-                        <td>7AM-9PM</td>
+                    <tr style="background: var(--danger-bg);">
+                        <td><strong>The Arth Saigon</strong></td>
+                        <td>222 Nguyễn Công Trứ</td>
+                        <td>Bar/Restaurant</td>
+                        <td>5PM-2AM</td>
+                        <td><span class="badge badge-high">HIGH</span></td>
+                    </tr>
+                    <tr style="background: var(--danger-bg);">
+                        <td><strong>FETTI Club</strong></td>
+                        <td>20 Nguyễn Công Trứ</td>
+                        <td>Lounge/Club</td>
+                        <td>Night-focused</td>
+                        <td><span class="badge badge-high">HIGH</span></td>
+                    </tr>
+                    <tr style="background: var(--warn-bg);">
+                        <td><strong>Carpe Diem</strong></td>
+                        <td>221 Nguyễn Công Trứ</td>
+                        <td>Café & Pub</td>
+                        <td>Mixed day-night</td>
                         <td><span class="badge badge-med">MED</span></td>
                     </tr>
-                    <tr>
-                        <td><strong>R.A.C Coffee & Beer</strong></td>
-                        <td>59 Phó Đức Chính</td>
-                        <td>Coffee + Beer hybrid</td>
-                        <td>40-100K VND</td>
-                        <td>Day-to-night</td>
-                        <td><span class="badge badge-high">HIGH</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Lalin's Coffee</strong></td>
-                        <td>Phó Đức Chính</td>
-                        <td>Café/Trà + Bánh</td>
-                        <td>30-70K VND</td>
-                        <td>Delivery-focused</td>
-                        <td><span class="badge badge-low">LOW</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Nghệ Thuật Cafe</strong></td>
-                        <td>97A Phó Đức Chính</td>
-                        <td>Local Café</td>
-                        <td>30-60K VND</td>
-                        <td>Varies</td>
-                        <td><span class="badge badge-low">LOW</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Mach Coffee</strong></td>
-                        <td>39 Phó Đức Chính</td>
-                        <td>Small Café</td>
-                        <td>30-60K VND</td>
-                        <td>Morning-day</td>
-                        <td><span class="badge badge-low">LOW</span></td>
+                    <tr style="background: var(--warn-bg);">
+                        <td><strong>419 Restaurant</strong></td>
+                        <td>158/6 Nguyễn Công Trứ</td>
+                        <td>Japanese + Cocktail</td>
+                        <td>Lunch-late</td>
+                        <td><span class="badge badge-med">MED</span></td>
                     </tr>
                 </table>
-            </div>
 
-            <div class="category-box">
-                <h4>🍜 Restaurants</h4>
+                <!-- Category Analysis -->
+                <h2>📊 By Category</h2>
+                
+                <div class="category-box">
+                    <h4>☕ Café Chains</h4>
+                    <p><strong>2 venues:</strong> Katinat, Là Việt</p>
+                    <p><em>Characteristics:</em> High volume, low ticket (30-100K), fast turnover. Morning/lunch crowd dominated.</p>
+                </div>
+
+                <div class="category-box">
+                    <h4>🏪 Independent Cafés</h4>
+                    <p><strong>4+ venues:</strong> R.A.C, Lalin's, Nghệ Thuật, Mach Coffee</p>
+                    <p><em>Characteristics:</em> Character-focused, loyal local customers, smaller scale.</p>
+                </div>
+
+                <div class="category-box">
+                    <h4>🍺 Coffee + Beer Hybrid — <em>Most Similar to CUR8</em></h4>
+                    <p><strong>2 venues:</strong> R.A.C, Carpe Diem</p>
+                    <p><em>Characteristics:</em> Day-to-night transition, dual revenue streams. Neither is dominant — opportunity for CUR8 to own.</p>
+                </div>
+
+                <div class="category-box">
+                    <h4>🎵 Pub / Lounge / Club</h4>
+                    <p><strong>3+ venues:</strong> Home Pub, FETTI, The Arth</p>
+                    <p><em>Characteristics:</em> Night-focused, higher ticket, entertainment-driven. Strong PM competition.</p>
+                </div>
+
+                <!-- White Space -->
+                <h2>🎯 White Space Opportunities</h2>
+                
+                <div class="insight-box">
+                    <h3>1. "Day-to-Night" — Unclaimed Territory</h3>
+                    <p>R.A.C and Carpe Diem attempt this model but neither is dominant. CUR8 can own this positioning with stronger execution (Sound Lab + dedicated programming).</p>
+                </div>
+
+                <div class="insight-box">
+                    <h3>2. Retail + F&B Integration</h3>
+                    <p>No venue in the area sells products (merch, specialty goods, vinyl). CUR8 can add retail revenue stream on top of F&B.</p>
+                </div>
+
+                <div class="insight-box">
+                    <h3>3. Community / Event Space — "Third Place" Gap</h3>
+                    <p>Home Pub has Phở Đặc Biệt brand but lacks third-place vibe. CUR8's Sound Lab + programming can fill this void.</p>
+                </div>
+
+                <!-- Risks -->
+                <h2>⚠️ Competitive Risks</h2>
+                
+                <div class="warning-box">
+                    <p><strong>1. Over-saturated café market:</strong> Katinat + Là Việt already capture morning/lunch crowd. CUR8 needs differentiation in afternoon/evening slots.</p>
+                </div>
+                <div class="warning-box">
+                    <p><strong>2. Night competition is fierce:</strong> Home Pub, FETTI, The Arth are established. CUR8 needs clear identity to compete for PM crowd.</p>
+                </div>
+                <div class="warning-box">
+                    <p><strong>3. Rent pressure:</strong> District 1, near major intersection = premium rent. AM revenue helps fixed cost recovery but margin pressure is real.</p>
+                </div>
+
+                <!-- International Benchmarks -->
+                <h2>🌍 International Benchmarks</h2>
+                <p>Reference venues worldwide that validate CUR8's model and positioning:</p>
+
+                <div class="intl-card">
+                    <div>
+                        <h4>Kissa Sakaiki</h4>
+                        <span class="city">📍 Tokyo, Japan</span>
+                        <p>Origin format — defines "kissa" pacing. Cafe by day, listening bar by night. Long-established cultural model.</p>
+                    </div>
+                    <div>
+                        <h4>Bar Music</h4>
+                        <span class="city">📍 Tokyo, Japan</span>
+                        <p>Cocktail + music curation balance. Excellent music programming without full performance setup.</p>
+                    </div>
+                </div>
+
+                <div class="intl-card">
+                    <div>
+                        <h4>Public Records</h4>
+                        <span class="city">📍 Brooklyn, USA</span>
+                        <p>Listening room + cafe + restaurant. <strong>Closest to CUR8's multi-program model.</strong> Restaurant pairs with vinyl listening.</p>
+                    </div>
+                    <div>
+                        <h4>Brilliant Corners</h4>
+                        <span class="city">📍 London, UK</span>
+                        <p>Listening + restaurant. Public Records progenitor. Proves audiophile dining works as concept.</p>
+                    </div>
+                </div>
+
+                <div class="intl-card">
+                    <div>
+                        <h4>Spiritland</h4>
+                        <span class="city">📍 London, UK</span>
+                        <p>Multi-location listening bar — operationalized. Shows scalability of dedicated listening room model.</p>
+                    </div>
+                    <div>
+                        <h4>Eavesdrop</h4>
+                        <span class="city">📍 Brooklyn, USA</span>
+                        <p>Listening bar with focus. Smaller format proves intimate listening room can work commercially.</p>
+                    </div>
+                </div>
+
+                <div class="intl-card">
+                    <div>
+                        <h4>In Sheep's Clothing</h4>
+                        <span class="city">📍 Los Angeles, USA</span>
+                        <p>Modern listening bar with adjacent restaurant. American interpretation of Japanese listening bar model.</p>
+                    </div>
+                    <div>
+                        <h4>The Standing Room</h4>
+                        <span class="city">📍 Brooklyn, USA</span>
+                        <p>Standing-only listening bar. Lower capex model — validates minimalist listening format.</p>
+                    </div>
+                </div>
+
+                <div class="intl-card">
+                    <div>
+                        <h4>Cafe Oto</h4>
+                        <span class="city">📍 London, UK</span>
+                        <p>Music + cafe (live programming variant). Shows café-to-music-venue transition path.</p>
+                    </div>
+                    <div>
+                        <h4>Tone Studio</h4>
+                        <span class="city">📍 Toronto, Canada</span>
+                        <p>Dedicated audiophile bar. High-fidelity sound focus validates Sound Lab positioning.</p>
+                    </div>
+                </div>
+
+                <h3>What These Prove for CUR8</h3>
+                <ul>
+                    <li>Multi-daypart (cafe → bar → listening) is <strong>validated globally</strong></li>
+                    <li>Dedicated listening room creates <strong>durable competitive moat</strong></li>
+                    <li>Vietnamese-led music curation differentiates from Japanese pastiche in HCMC</li>
+                    <li>Sound Lab as bookable program is <strong>rare globally</strong> — most listening rooms are walk-in</li>
+                    <li>Vinyl club / membership recurring revenue model is <strong>virtually untapped in Vietnam</strong></li>
+                </ul>
+
+                <!-- Revenue Comparison -->
+                <h2>💰 Revenue Comparison (Monthly Estimates)</h2>
                 <table>
                     <tr>
-                        <th>Venue</th>
-                        <th>Address</th>
-                        <th>Type</th>
-                        <th>Threat</th>
+                        <th>Category</th>
+                        <th>Est. Monthly Revenue</th>
+                        <th>Avg Ticket</th>
+                        <th>CUR8 Overlap</th>
                     </tr>
-                    <tr>
-                        <td><strong>Gà Mẹt</strong></td>
-                        <td>49 Phó Đức Chính</td>
-                        <td>Vietnamese cuisine</td>
-                        <td><span class="badge badge-low">NONE</span></td>
+                    <tr style="background: var(--danger-bg);">
+                        <td><strong>The Arth Saigon</strong></td>
+                        <td>~800M-1.2B VND</td>
+                        <td>300-500K VND</td>
+                        <td>HIGH — same PM bar crowd</td>
+                    </tr>
+                    <tr style="background: var(--danger-bg);">
+                        <td><strong>FETTI Club</strong></td>
+                        <td>~600M-1B VND</td>
+                        <td>300-500K VND</td>
+                        <td>HIGH — same PM club crowd</td>
+                    </tr>
+                    <tr style="background: var(--danger-bg);">
+                        <td><strong>Home Pub</strong></td>
+                        <td>~400-600M VND</td>
+                        <td>200-350K VND</td>
+                        <td>HIGH — same night crowd</td>
+                    </tr>
+                    <tr style="background: var(--warn-bg);">
+                        <td><strong>R.A.C Coffee & Beer</strong></td>
+                        <td>~200-350M VND</td>
+                        <td>60-120K VND</td>
+                        <td>MED-HIGH — day-to-night model</td>
+                    </tr>
+                    <tr style="background: var(--warn-bg);">
+                        <td><strong>Carpe Diem</strong></td>
+                        <td>~150-250M VND</td>
+                        <td>60-120K VND</td>
+                        <td>MED — mixed day-night</td>
+                    </tr>
+                    <tr style="background: var(--success-bg);">
+                        <td><strong>Katinat</strong></td>
+                        <td>~500M-800M VND</td>
+                        <td>30-100K VND</td>
+                        <td>LOW — chain, different model</td>
+                    </tr>
+                    <tr style="background: var(--success-bg);">
+                        <td><strong>Là Việt Coffee</strong></td>
+                        <td>~100-200M VND</td>
+                        <td>50-80K VND</td>
+                        <td>LOW — morning-focused</td>
                     </tr>
                 </table>
-            </div>
-        </div>
 
-        <!-- On Nguyễn Công Trứ (Parallel Street) -->
-        <div class="section">
-            <h2>🚶 Nguyễn Công Trứ (1 Block Away — Parallel)</h2>
-            
-            <table>
-                <tr>
-                    <th>Venue</th>
-                    <th>Address</th>
-                    <th>Type</th>
-                    <th>Hours</th>
-                    <th>Threat Level</th>
-                </tr>
-                <tr style="background:#ffebee;">
-                    <td><strong>Home Pub</strong></td>
-                    <td>58 Nguyễn Công Trứ</td>
-                    <td>Pub/Lounge</td>
-                    <td>Night-focused</td>
-                    <td><span class="badge badge-high">HIGH</span></td>
-                </tr>
-                <tr style="background:#ffebee;">
-                    <td><strong>The Arth Saigon</strong></td>
-                    <td>222 Nguyễn Công Trứ</td>
-                    <td>Bar/Restaurant</td>
-                    <td>5PM-2AM</td>
-                    <td><span class="badge badge-high">HIGH</span></td>
-                </tr>
-                <tr style="background:#ffebee;">
-                    <td><strong>FETTI Club</strong></td>
-                    <td>20 Nguyễn Công Trứ</td>
-                    <td>Lounge/Club</td>
-                    <td>Night-focused</td>
-                    <td><span class="badge badge-high">HIGH</span></td>
-                </tr>
-                <tr style="background:#fff3e0;">
-                    <td><strong>Carpe Diem</strong></td>
-                    <td>221 Nguyễn Công Trứ</td>
-                    <td>Café & Pub</td>
-                    <td>Mixed day-night</td>
-                    <td><span class="badge badge-med">MED</span></td>
-                </tr>
-                <tr style="background:#fff3e0;">
-                    <td><strong>419 Restaurant</strong></td>
-                    <td>158/6 Nguyễn Công Trứ</td>
-                    <td>Japanese + Cocktail</td>
-                    <td>Lunch-late</td>
-                    <td><span class="badge badge-med">MED</span></td>
-                </tr>
-            </table>
-        </div>
+                <!-- Strategic Recommendations -->
+                <h2>🎯 Strategic Recommendations</h2>
+                <table>
+                    <tr>
+                        <th>Factor</th>
+                        <th>Strategy</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Differentiation</strong></td>
+                        <td>Hybrid café-bar + retail (merch, products) — not just drinking, also buying. Sound Lab is unique asset.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Timing</strong></td>
+                        <td>Soft launch weekday mornings first — less competition, test operations before weekend rush.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pricing</strong></td>
+                        <td>Ticket 80-150K VND — higher than Katinat, lower than The Arth. Positioned for quality without premium.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Staffing</strong></td>
+                        <td>Cross-trained staff (barista + retail + FOH). Enables flexible daypart coverage without separate teams.</td>
+                    </tr>
+                </table>
 
-        <!-- By Category -->
-        <div class="section">
-            <h2>📊 Competitive Analysis by Category</h2>
-            
-            <div class="category-box">
-                <h4>☕ Café Chains</h4>
-                <p><strong>2 venues:</strong> Katinat, Là Việt</p>
-                <p><em>Characteristics:</em> High volume, low ticket (30-100K), fast turnover. Morning/lunch crowd dominated.</p>
-            </div>
+                <!-- Data Sources -->
+                <h2>📚 Data Sources</h2>
+                <ul>
+                    <li>Verified venue survey — on-street mapping 2026-04-20</li>
+                    <li>Foody.vn — venue listings and reviews</li>
+                    <li>Instagram / Social media — venue accounts</li>
+                    <li>Connect Saigon — bar/venue profiles</li>
+                    <li>Vietnam Coracle — bar guides</li>
+                </ul>
+                <p><em>Revenue estimates are extrapolated from venue capacity, average ticket estimates, and industry benchmarks. Actual figures may vary.</em></p>
 
-            <div class="category-box">
-                <h4>🏪 Independent Cafés</h4>
-                <p><strong>4+ venues:</strong> R.A.C, Lalin's, Nghệ Thuật, Mach Coffee</p>
-                <p><em>Characteristics:</em> Character-focused, loyal local customers, smaller scale.</p>
-            </div>
-
-            <div class="category-box">
-                <h4>🍺 Coffee + Beer Hybrid</h4>
-                <p><strong>2 venues:</strong> R.A.C, Carpe Diem</p>
-                <p><em>Characteristics:</em> Day-to-night transition, dual revenue streams. <strong>Most similar to CUR8 model.</strong></p>
-            </div>
-
-            <div class="category-box">
-                <h4>🎵 Pub / Lounge / Club</h4>
-                <p><strong>3+ venues:</strong> Home Pub, FETTI, The Arth</p>
-                <p><em>Characteristics:</em> Night-focused, higher ticket, entertainment-driven. Strong PM competition.</p>
-            </div>
-
-            <div class="category-box">
-                <h4>🍽️ Restaurant + Bar</h4>
-                <p><strong>2 venues:</strong> 419 Restaurant, The Arth</p>
-                <p><em>Characteristics:</em> Food-led, drinks secondary. Japanese + cocktail trend emerging.</p>
-            </div>
-        </div>
-
-        <!-- White Space & Risks -->
-        <div class="section">
-            <h2>🎯 White Space Opportunities for CUR8</h2>
-            
-            <div class="insight-box">
-                <h3>1. "Day-to-Night" — Unclaimed Territory</h3>
-                <p>R.A.C and Carpe Diem attempt this model but neither is dominant. CUR8 can own this positioning with stronger execution (Sound Lab + dedicated programming).</p>
-            </div>
-
-            <div class="insight-box">
-                <h3>2. Retail + F&B Integration — No One Does This Well</h3>
-                <p>No venue in the area sells products (merch, specialty goods, vinyl). CUR8 can add retail revenue stream on top of F&B.</p>
-            </div>
-
-            <div class="insight-box">
-                <h3>3. Community / Event Space — "Third Place" Gap</h3>
-                <p>Home Pub has Phở Đặc Biệt brand but lacks third-place vibe. CUR8's Sound Lab + programming can fill this void.</p>
-            </div>
-
-            <h3 style="margin-top:30px;">⚠️ Competitive Risks</h3>
-            <div class="warning-box">
-                <p><strong>1. Over-saturated café market:</strong> Katinat + Là Việt already capture morning/lunch crowd. CUR8 needs differentiation in afternoon/evening slots.</p>
-            </div>
-            <div class="warning-box">
-                <p><strong>2. Night competition is fierce:</strong> Home Pub, FETTI, The Arth are established. CUR8 needs clear identity to compete for PM crowd.</p>
-            </div>
-            <div class="warning-box">
-                <p><strong>3. Rent pressure:</strong> District 1, near major intersection = premium rent. AM revenue helps fixed cost recovery but margin pressure is real.</p>
-            </div>
-        </div>
-
-        <!-- Strategic Recommendations -->
-        <div class="section">
-            <h2>🎯 Strategic Recommendations</h2>
-            <table>
-                <tr>
-                    <th>Factor</th>
-                    <th>Strategy</th>
-                </tr>
-                <tr>
-                    <td><strong>Differentiation</strong></td>
-                    <td>Hybrid café-bar + retail (merch, products) — not just drinking, also buying. Sound Lab is unique asset.</td>
-                </tr>
-                <tr>
-                    <td><strong>Timing</strong></td>
-                    <td>Soft launch weekday mornings first — less competition, test operations before weekend rush.</td>
-                </tr>
-                <tr>
-                    <td><strong>Pricing</strong></td>
-                    <td>Ticket 80-150K VND — higher than Katinat, lower than The Arth. Positioned for quality without premium.</td>
-                </tr>
-                <tr>
-                    <td><strong>Staffing</strong></td>
-                    <td>Cross-trained staff (barista + retail + FOH). Enables flexible daypart coverage without separate teams.</td>
-                </tr>
-            </table>
-        </div>
-
-        <!-- Revenue Comparison -->
-        <div class="section">
-            <h2>💰 Revenue Comparison (Monthly Estimates)</h2>
-            <table>
-                <tr>
-                    <th>Category</th>
-                    <th>Est. Monthly Revenue</th>
-                    <th>Avg Ticket</th>
-                    <th>CUR8 Overlap</th>
-                </tr>
-                <tr style="background:#ffebee;">
-                    <td><strong>The Arth Saigon</strong></td>
-                    <td>~800M-1.2B VND</td>
-                    <td>300-500K VND</td>
-                    <td>HIGH — same PM bar crowd</td>
-                </tr>
-                <tr style="background:#ffebee;">
-                    <td><strong>FETTI Club</strong></td>
-                    <td>~600M-1B VND</td>
-                    <td>300-500K VND</td>
-                    <td>HIGH — same PM club crowd</td>
-                </tr>
-                <tr style="background:#ffebee;">
-                    <td><strong>Home Pub</strong></td>
-                    <td>~400-600M VND</td>
-                    <td>200-350K VND</td>
-                    <td>HIGH — same night crowd</td>
-                </tr>
-                <tr style="background:#fff3e0;">
-                    <td><strong>R.A.C Coffee & Beer</strong></td>
-                    <td>~200-350M VND</td>
-                    <td>60-120K VND</td>
-                    <td>MED-HIGH — day-to-night model</td>
-                </tr>
-                <tr style="background:#fff3e0;">
-                    <td><strong>Carpe Diem</strong></td>
-                    <td>~150-250M VND</td>
-                    <td>60-120K VND</td>
-                    <td>MED — mixed day-night</td>
-                </tr>
-                <tr style="background:#e8f5e9;">
-                    <td><strong>Katinat</strong></td>
-                    <td>~500M-800M VND</td>
-                    <td>30-100K VND</td>
-                    <td>LOW — chain, different model</td>
-                </tr>
-                <tr style="background:#e8f5e9;">
-                    <td><strong>Là Việt Coffee</strong></td>
-                    <td>~100-200M VND</td>
-                    <td>50-80K VND</td>
-                    <td>LOW — morning-focused</td>
-                </tr>
-            </table>
-        </div>
-
-        <!-- Data Sources -->
-        <div class="section">
-            <h2>📚 Data Sources</h2>
-            <ul style="margin:15px 0 15px 25px;">
-                <li>Verified venue survey — on-street mapping 2026-04-20</li>
-                <li>Foody.vn — venue listings and reviews</li>
-                <li>Instagram / Social media — venue accounts</li>
-                <li>Connect Saigon — bar/venue profiles</li>
-            </ul>
-            <p style="color:#999; font-size:0.85em; margin-top:15px;">
-                <em>Revenue estimates are extrapolated from venue capacity, average ticket estimates, and industry benchmarks. Actual figures may vary.</em>
-            </p>
-        </div>
+                <hr>
+                <div class="page-footer">
+                    <span>CUR8 × GoodFellas — Competitor Landscape Analysis</span>
+                    <span>Generated 2026-04-20</span>
+                </div>
+            </article>
+        </main>
     </div>
-
-    <footer style="text-align:center; padding:30px; color:#666; font-size:0.9em;">
-        <p>CUR8 × GoodFellas — Competitor Landscape Analysis</p>
-        <p>Generated 2026-04-20</p>
-    </footer>
 </body>
 </html>
